@@ -1,0 +1,220 @@
+{
+  "schema_id": "crystalgate.matrix-phase.synthetic",
+  "version": "0.1.0",
+  "artifact_license": {
+    "copyright": "Copyright © 2026 Derrick Covington.",
+    "published_through": "Green The Dream Research Lab",
+    "license": "CC BY-NC-ND 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+    "commercial_and_adaptation_permissions": "derrick@greenthedream.com",
+    "required_notices": [
+      "Copyright © 2026 Derrick Covington.",
+      "Published through Green The Dream Research Lab."
+    ]
+  },
+  "description": "Closed synthetic schema for auditing matrix-to-phase routes.",
+  "closed_for_objective": true,
+  "max_route_edges": 6,
+  "route_length_penalty": 0.02,
+  "types": [
+    "complex_matrix",
+    "complex_scalar",
+    "unit_complex",
+    "phase_class",
+    "pi_normalized_phase_class",
+    "phase_observation"
+  ],
+  "profiles": {
+    "semantic_with_soft_diagnostic": [
+      "object.matrix_declared",
+      "basis.complex_linear_declared",
+      "observable.response_declared",
+      "observable.phase_mismatch"
+    ]
+  },
+  "gates": [
+    {
+      "id": "object.matrix_declared",
+      "requirement": "required",
+      "severity": "hard",
+      "fact": "matrix_declared",
+      "assumptions": ["The input is declared as a finite complex matrix."]
+    },
+    {
+      "id": "basis.complex_linear_declared",
+      "requirement": "required",
+      "severity": "hard",
+      "fact": "complex_linear_basis_declared",
+      "assumptions": ["Determinant and trace use the declared complex-linear basis family."]
+    },
+    {
+      "id": "observable.response_declared",
+      "requirement": "required",
+      "severity": "hard",
+      "fact": "observable_response_declared",
+      "assumptions": ["The terminal report schema and comparison rule are declared."]
+    },
+    {
+      "id": "observable.phase_mismatch",
+      "requirement": "optional",
+      "severity": "soft",
+      "residual_key": "phase_mismatch",
+      "weight": 0.1,
+      "assumptions": ["Residual is normalized by a positive declared phase scale."]
+    }
+  ],
+  "translators": [
+    {
+      "id": "matrix.determinant",
+      "version": "1.0.0",
+      "source": "complex_matrix",
+      "target": "complex_scalar",
+      "objectives": ["determinant_phase_observation"],
+      "cost": 0.2,
+      "preconditions": ["matrix is square", "determinant law is registered"],
+      "postconditions": ["output equals det(A) as a complex scalar"],
+      "checks": [
+        {
+          "id": "law.determinant_registered",
+          "requirement": "required",
+          "severity": "hard",
+          "fact": "determinant_law_registered",
+          "assumptions": ["The determinant implementation matches the declared matrix semantics."]
+        }
+      ]
+    },
+    {
+      "id": "matrix.trace",
+      "version": "1.0.0",
+      "source": "complex_matrix",
+      "target": "complex_scalar",
+      "objectives": ["trace_phase_observation"],
+      "cost": 0.15,
+      "preconditions": ["matrix is square", "trace law is registered"],
+      "postconditions": ["output equals tr(A) as a complex scalar"],
+      "checks": [
+        {
+          "id": "law.trace_registered",
+          "requirement": "required",
+          "severity": "hard",
+          "fact": "trace_law_registered",
+          "assumptions": ["The trace implementation matches the declared matrix semantics."]
+        }
+      ]
+    },
+    {
+      "id": "scalar.divide_by_pi",
+      "version": "1.0.0",
+      "source": "complex_scalar",
+      "target": "complex_scalar",
+      "objectives": ["determinant_phase_observation"],
+      "cost": 0.05,
+      "preconditions": ["pi is nonzero"],
+      "postconditions": ["semantic type remains complex_scalar"],
+      "checks": [
+        {
+          "id": "transition.scalar_type_preserved",
+          "requirement": "required",
+          "severity": "hard",
+          "fact": "scalar_division_type_preserved",
+          "assumptions": ["Scalar division by pi is not a phase cast."]
+        }
+      ]
+    },
+    {
+      "id": "scalar.phase_normalize",
+      "version": "1.0.0",
+      "source": "complex_scalar",
+      "target": "unit_complex",
+      "objectives": ["determinant_phase_observation"],
+      "cost": 0.25,
+      "preconditions": ["input scalar is nonzero"],
+      "postconditions": ["output z/|z| lies in U(1)"],
+      "checks": [
+        {
+          "id": "window.scalar_nonzero",
+          "requirement": "required",
+          "severity": "hard",
+          "fact": "determinant_nonzero",
+          "assumptions": ["Phase normalization is undefined at zero."]
+        }
+      ]
+    },
+    {
+      "id": "scalar.argument_class",
+      "version": "1.0.0",
+      "source": "complex_scalar",
+      "target": "phase_class",
+      "objectives": ["determinant_phase_observation"],
+      "cost": 0.5,
+      "preconditions": ["input scalar is nonzero", "argument is quotient-valued"],
+      "postconditions": ["output is [arg(z)] in R/(2*pi*Z)"],
+      "checks": [
+        {
+          "id": "window.argument_nonzero",
+          "requirement": "required",
+          "severity": "hard",
+          "fact": "determinant_nonzero",
+          "assumptions": ["The quotient-valued argument is undefined at zero."]
+        }
+      ]
+    },
+    {
+      "id": "unit_complex.to_phase_class",
+      "version": "1.0.0",
+      "source": "unit_complex",
+      "target": "phase_class",
+      "objectives": ["determinant_phase_observation"],
+      "cost": 0.1,
+      "preconditions": ["input lies in U(1)"],
+      "postconditions": ["output is a phase class modulo 2*pi"],
+      "checks": [
+        {
+          "id": "transition.unit_phase_registered",
+          "requirement": "required",
+          "severity": "hard",
+          "fact": "unit_phase_translator_registered",
+          "assumptions": ["The phase is quotient-valued rather than a branch-dependent real number."]
+        }
+      ]
+    },
+    {
+      "id": "phase.pi_normalize",
+      "version": "1.0.0",
+      "source": "phase_class",
+      "target": "pi_normalized_phase_class",
+      "objectives": ["determinant_phase_observation"],
+      "cost": 0.1,
+      "preconditions": ["input is a phase class modulo 2*pi"],
+      "postconditions": ["output is [theta/pi] modulo 2"],
+      "checks": [
+        {
+          "id": "transition.pi_quotient_isomorphism",
+          "requirement": "required",
+          "severity": "hard",
+          "fact": "pi_quotient_isomorphism_registered",
+          "assumptions": ["Normalization is performed on quotient classes."]
+        }
+      ]
+    },
+    {
+      "id": "pi_phase.observe",
+      "version": "1.0.0",
+      "source": "pi_normalized_phase_class",
+      "target": "phase_observation",
+      "objectives": ["determinant_phase_observation"],
+      "cost": 0.15,
+      "preconditions": ["terminal report schema is declared"],
+      "postconditions": ["output is a native phase-report record"],
+      "checks": [
+        {
+          "id": "observable.adapter_registered",
+          "requirement": "required",
+          "severity": "hard",
+          "fact": "observable_adapter_registered",
+          "assumptions": ["The adapter preserves the quotient-valued phase and declared units."]
+        }
+      ]
+    }
+  ]
+}

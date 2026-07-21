@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="980" viewBox="0 0 1600 980" role="img" aria-labelledby="title desc">
+  <title id="title">Semantic facet schema of the CrystalGate framework</title>
+  <desc id="desc">Nine possible mathematical facet dimensions surround a semantic address schema. A particular address records a subset of them. Spokes indicate available classification dimensions, not translator arrows. Surface expressions enter through a semantic address map and native observables exit on the right.</desc>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="46%" r="72%">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#edf4f8"/>
+    </radialGradient>
+    <radialGradient id="core" cx="45%" cy="35%" r="70%">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.55" stop-color="#e5f7f3"/>
+      <stop offset="1" stop-color="#a8ddd2"/>
+    </radialGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="6" stdDeviation="9" flood-color="#17324d" flood-opacity="0.16"/>
+    </filter>
+    <marker id="arrow" markerWidth="11" markerHeight="11" refX="9" refY="5.5" orient="auto">
+      <path d="M0,0 L11,5.5 L0,11 z" fill="#55798d"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="11" markerHeight="11" refX="9" refY="5.5" orient="auto">
+      <path d="M0,0 L11,5.5 L0,11 z" fill="#278b78"/>
+    </marker>
+    <style>
+      .title { font: 700 34px Inter, Segoe UI, Arial, sans-serif; fill: #102a43; }
+      .subtitle { font: 500 18px Inter, Segoe UI, Arial, sans-serif; fill: #52677c; }
+      .facetTitle { font: 700 19px Inter, Segoe UI, Arial, sans-serif; fill: #17324d; }
+      .facetText { font: 500 14px Inter, Segoe UI, Arial, sans-serif; fill: #52677c; }
+      .coreTitle { font: 750 24px Inter, Segoe UI, Arial, sans-serif; fill: #154f46; }
+      .coreText { font: 600 16px Inter, Segoe UI, Arial, sans-serif; fill: #396b63; }
+      .edge { font: 650 14px Inter, Segoe UI, Arial, sans-serif; fill: #55798d; }
+      .sideTitle { font: 700 19px Inter, Segoe UI, Arial, sans-serif; fill: #17324d; }
+      .sideText { font: 500 15px Inter, Segoe UI, Arial, sans-serif; fill: #52677c; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="980" rx="24" fill="url(#bg)"/>
+  <text x="70" y="64" class="title">The Gate Crystal semantic facet schema</text>
+  <text x="70" y="98" class="subtitle">Spokes denote available classification dimensions; a particular address records a subset.</text>
+
+  <g stroke="#86a8b9" stroke-width="2.5" fill="none">
+    <path d="M676 393 C610 350 538 330 470 330"/>
+    <path d="M800 342 C800 306 800 279 800 246"/>
+    <path d="M924 393 C992 350 1063 330 1135 330"/>
+    <path d="M982 485 C1060 463 1128 455 1192 455"/>
+    <path d="M965 626 C1044 679 1096 717 1146 753"/>
+    <path d="M863 684 C892 742 926 786 947 824"/>
+    <path d="M737 684 C708 742 674 786 653 824"/>
+    <path d="M635 626 C557 679 504 717 454 753"/>
+    <path d="M618 485 C540 463 472 455 408 455"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <polygon points="800,342 918,405 982,520 948,650 842,719 710,704 620,610 618,481 682,393" fill="url(#core)" stroke="#278b78" stroke-width="4"/>
+  </g>
+  <text x="800" y="482" text-anchor="middle" class="coreTitle">SEMANTIC ADDRESS</text>
+  <text x="800" y="513" text-anchor="middle" class="coreTitle">SCHEMA</text>
+  <text x="800" y="552" text-anchor="middle" class="coreText">type · basis family</text>
+  <text x="800" y="579" text-anchor="middle" class="coreText">validity · boundary · output</text>
+  <text x="800" y="606" text-anchor="middle" class="coreText">facet subset F(e) ⊆ F</text>
+
+  <g filter="url(#shadow)">
+    <rect x="300" y="268" width="260" height="108" rx="18" fill="#eef5ff" stroke="#4f7fb5" stroke-width="2.5"/>
+    <rect x="670" y="150" width="260" height="108" rx="18" fill="#eef5ff" stroke="#4f7fb5" stroke-width="2.5"/>
+    <rect x="1040" y="268" width="260" height="108" rx="18" fill="#eef5ff" stroke="#4f7fb5" stroke-width="2.5"/>
+    <rect x="1190" y="405" width="280" height="108" rx="18" fill="#f1effb" stroke="#7563a8" stroke-width="2.5"/>
+    <rect x="1090" y="735" width="280" height="108" rx="18" fill="#eaf8f4" stroke="#278b78" stroke-width="2.5"/>
+    <rect x="820" y="815" width="260" height="108" rx="18" fill="#fff7e6" stroke="#c98819" stroke-width="2.5"/>
+    <rect x="520" y="815" width="260" height="108" rx="18" fill="#fff7e6" stroke="#c98819" stroke-width="2.5"/>
+    <rect x="230" y="735" width="280" height="108" rx="18" fill="#eaf8f4" stroke="#278b78" stroke-width="2.5"/>
+    <rect x="130" y="405" width="280" height="108" rx="18" fill="#f1effb" stroke="#7563a8" stroke-width="2.5"/>
+  </g>
+
+  <text x="430" y="307" text-anchor="middle" class="facetTitle">PHASE · Fπ</text>
+  <text x="430" y="335" text-anchor="middle" class="facetText">angle · holonomy · periodicity</text>
+  <text x="430" y="357" text-anchor="middle" class="facetText">quotient phase coordinates</text>
+
+  <text x="800" y="189" text-anchor="middle" class="facetTitle">LINEAR · FL</text>
+  <text x="800" y="217" text-anchor="middle" class="facetText">vectors · matrices · spectra</text>
+  <text x="800" y="239" text-anchor="middle" class="facetText">trace · determinant · projection</text>
+
+  <text x="1170" y="307" text-anchor="middle" class="facetTitle">SCALE · Flog</text>
+  <text x="1170" y="335" text-anchor="middle" class="facetText">growth · decay · ratios</text>
+  <text x="1170" y="357" text-anchor="middle" class="facetText">logarithmic and exponential flow</text>
+
+  <text x="1330" y="444" text-anchor="middle" class="facetTitle">SYMMETRY · FG</text>
+  <text x="1330" y="472" text-anchor="middle" class="facetText">groups · representations · sectors</text>
+  <text x="1330" y="494" text-anchor="middle" class="facetText">actions and invariant projection</text>
+
+  <text x="1230" y="774" text-anchor="middle" class="facetTitle">FIELD / STATE · FΦ</text>
+  <text x="1230" y="802" text-anchor="middle" class="facetText">sources · fields · evolution</text>
+  <text x="1230" y="824" text-anchor="middle" class="facetText">actions and constitutive laws</text>
+
+  <text x="950" y="854" text-anchor="middle" class="facetTitle">THERMO / INFO · FT</text>
+  <text x="950" y="882" text-anchor="middle" class="facetText">entropy · heat · information</text>
+  <text x="950" y="904" text-anchor="middle" class="facetText">physical budgets under assumptions</text>
+
+  <text x="650" y="854" text-anchor="middle" class="facetTitle">CONTROL · FC</text>
+  <text x="650" y="882" text-anchor="middle" class="facetText">feedback · attractors · robustness</text>
+  <text x="650" y="904" text-anchor="middle" class="facetText">stability and safe operation</text>
+
+  <text x="370" y="774" text-anchor="middle" class="facetTitle">BOUNDARY · FB</text>
+  <text x="370" y="802" text-anchor="middle" class="facetText">interfaces · thresholds · singular sets</text>
+  <text x="370" y="824" text-anchor="middle" class="facetText">matching and continuation policies</text>
+
+  <text x="270" y="444" text-anchor="middle" class="facetTitle">OBSERVABLE · FO</text>
+  <text x="270" y="472" text-anchor="middle" class="facetText">proofs · detectors · benchmarks</text>
+  <text x="270" y="494" text-anchor="middle" class="facetText">uncertainty and falsification</text>
+
+  <g filter="url(#shadow)">
+    <rect x="70" y="150" width="250" height="82" rx="16" fill="#ffffff" stroke="#8ca9b8" stroke-width="2"/>
+    <rect x="1280" y="150" width="250" height="82" rx="16" fill="#ffffff" stroke="#278b78" stroke-width="2"/>
+  </g>
+  <text x="195" y="181" text-anchor="middle" class="sideTitle">Surface expression</text>
+  <text x="195" y="208" text-anchor="middle" class="sideText">presentation record pΓ(e)</text>
+  <text x="1405" y="181" text-anchor="middle" class="sideTitle">Native observable</text>
+  <text x="1405" y="208" text-anchor="middle" class="sideText">response map into Y</text>
+
+  <path d="M320 191 C430 191 520 270 667 394" fill="none" stroke="#55798d" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="480" y="230" class="edge">canonicalize α<tspan baseline-shift="sub" font-size="11">Σ</tspan></text>
+  <path d="M930 394 C1075 270 1170 191 1268 191" fill="none" stroke="#278b78" stroke-width="3" marker-end="url(#arrowGreen)"/>
+  <text x="1090" y="230" class="edge">observable closure RA</text>
+
+  <rect x="510" y="111" width="580" height="33" rx="10" fill="#17324d"/>
+  <text x="800" y="133" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15" font-weight="650" fill="#ffffff">Facet proximity is not permission: registered translators define route-graph edges.</text>
+</svg>

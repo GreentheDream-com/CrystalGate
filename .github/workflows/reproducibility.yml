@@ -1,0 +1,41 @@
+name: Reproducibility
+
+on:
+  push:
+    paths:
+      - "artifacts/minimal_gatefinder/**"
+      - ".github/workflows/reproducibility.yml"
+  pull_request:
+    paths:
+      - "artifacts/minimal_gatefinder/**"
+      - ".github/workflows/reproducibility.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-minimal-gatefinder:
+    name: Verify committed GateFinder report
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Validate the closed synthetic fixture
+        run: python artifacts/minimal_gatefinder/gatefinder_demo.py --check
+
+      - name: Regenerate the committed route report
+        run: python artifacts/minimal_gatefinder/gatefinder_demo.py
+
+      - name: Run executable artifact checks
+        run: python -m unittest discover -s artifacts/minimal_gatefinder -p "test_*.py" -v
+
+      - name: Verify the committed report is reproducible from the repository root
+        run: git diff --exit-code -- artifacts/minimal_gatefinder/generated/route_reports.json

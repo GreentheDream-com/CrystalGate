@@ -1,0 +1,2116 @@
+{
+  "artifact": "minimal_gatefinder",
+  "artifact_version": "0.1.0",
+  "schema_id": "crystalgate.matrix-phase.synthetic",
+  "artifact_license": {
+    "copyright": "Copyright © 2026 Derrick Covington.",
+    "published_through": "Green The Dream Research Lab",
+    "license": "CC BY-NC-ND 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+    "commercial_and_adaptation_permissions": "derrick@greenthedream.com",
+    "required_notices": [
+      "Copyright © 2026 Derrick Covington.",
+      "Published through Green The Dream Research Lab."
+    ]
+  },
+  "reports": [
+    {
+      "manifest_version": "crystalgate.route-report.0.1",
+      "claim_id": "accepted_normalized_phase",
+      "claim": "A nonsingular complex matrix is routed to a pi-normalized determinant-phase report through explicit normalization.",
+      "context": {
+        "objective": "determinant_phase_observation",
+        "requested_validity_level": "semantic",
+        "profile": "semantic_with_soft_diagnostic",
+        "facts": {
+          "matrix_declared": true,
+          "complex_linear_basis_declared": true,
+          "observable_response_declared": true,
+          "determinant_law_registered": true,
+          "determinant_nonzero": true,
+          "unit_phase_translator_registered": true,
+          "pi_quotient_isomorphism_registered": true,
+          "observable_adapter_registered": true,
+          "scalar_division_type_preserved": true
+        },
+        "residuals": {
+          "phase_mismatch": 0.2
+        }
+      },
+      "nodes": {
+        "source_type": "complex_matrix",
+        "target_type": "phase_observation"
+      },
+      "proposed_route": [
+        "matrix.determinant",
+        "scalar.phase_normalize",
+        "unit_complex.to_phase_class",
+        "phase.pi_normalize",
+        "pi_phase.observe"
+      ],
+      "proposed_assessment": "admissible",
+      "searched_routes": [
+        {
+          "translator_ids": [
+            "matrix.determinant",
+            "scalar.phase_normalize",
+            "unit_complex.to_phase_class",
+            "phase.pi_normalize",
+            "pi_phase.observe"
+          ],
+          "route_status": "admissible",
+          "route_cost": 0.92,
+          "failed_gate_ids": [],
+          "unresolved_gate_ids": []
+        },
+        {
+          "translator_ids": [
+            "matrix.determinant",
+            "scalar.argument_class",
+            "phase.pi_normalize",
+            "pi_phase.observe"
+          ],
+          "route_status": "admissible",
+          "route_cost": 1.05,
+          "failed_gate_ids": [],
+          "unresolved_gate_ids": []
+        }
+      ],
+      "selected_route": [
+        {
+          "translator_id": "matrix.determinant",
+          "version": "1.0.0",
+          "source": "complex_matrix",
+          "target": "complex_scalar",
+          "cost": 0.2,
+          "preconditions": [
+            "matrix is square",
+            "determinant law is registered"
+          ],
+          "postconditions": [
+            "output equals det(A) as a complex scalar"
+          ]
+        },
+        {
+          "translator_id": "scalar.phase_normalize",
+          "version": "1.0.0",
+          "source": "complex_scalar",
+          "target": "unit_complex",
+          "cost": 0.25,
+          "preconditions": [
+            "input scalar is nonzero"
+          ],
+          "postconditions": [
+            "output z/|z| lies in U(1)"
+          ]
+        },
+        {
+          "translator_id": "unit_complex.to_phase_class",
+          "version": "1.0.0",
+          "source": "unit_complex",
+          "target": "phase_class",
+          "cost": 0.1,
+          "preconditions": [
+            "input lies in U(1)"
+          ],
+          "postconditions": [
+            "output is a phase class modulo 2*pi"
+          ]
+        },
+        {
+          "translator_id": "phase.pi_normalize",
+          "version": "1.0.0",
+          "source": "phase_class",
+          "target": "pi_normalized_phase_class",
+          "cost": 0.1,
+          "preconditions": [
+            "input is a phase class modulo 2*pi"
+          ],
+          "postconditions": [
+            "output is [theta/pi] modulo 2"
+          ]
+        },
+        {
+          "translator_id": "pi_phase.observe",
+          "version": "1.0.0",
+          "source": "pi_normalized_phase_class",
+          "target": "phase_observation",
+          "cost": 0.15,
+          "preconditions": [
+            "terminal report schema is declared"
+          ],
+          "postconditions": [
+            "output is a native phase-report record"
+          ]
+        }
+      ],
+      "selected_route_ids": [
+        "matrix.determinant",
+        "scalar.phase_normalize",
+        "unit_complex.to_phase_class",
+        "phase.pi_normalize",
+        "pi_phase.observe"
+      ],
+      "certificates": [
+        {
+          "gate_id": "object.matrix_declared",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "pass",
+          "report_status": "satisfied",
+          "residual": 0.0,
+          "weight": 0.0,
+          "assumptions": [
+            "The input is declared as a finite complex matrix."
+          ],
+          "evidence": {
+            "kind": "schema_record",
+            "artifact": "schema.json#complex_matrix"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "accepted_normalized_phase"
+          },
+          "note": null
+        },
+        {
+          "gate_id": "basis.complex_linear_declared",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "pass",
+          "report_status": "satisfied",
+          "residual": 0.0,
+          "weight": 0.0,
+          "assumptions": [
+            "Determinant and trace use the declared complex-linear basis family."
+          ],
+          "evidence": {
+            "kind": "schema_record",
+            "artifact": "schema.json#complex-linear"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "accepted_normalized_phase"
+          },
+          "note": null
+        },
+        {
+          "gate_id": "observable.response_declared",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "pass",
+          "report_status": "satisfied",
+          "residual": 0.0,
+          "weight": 0.0,
+          "assumptions": [
+            "The terminal report schema and comparison rule are declared."
+          ],
+          "evidence": {
+            "kind": "report_contract",
+            "artifact": "schema.json#phase_observation"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "accepted_normalized_phase"
+          },
+          "note": null
+        },
+        {
+          "gate_id": "observable.phase_mismatch",
+          "requirement": "optional",
+          "severity": "soft",
+          "status": "pass",
+          "report_status": "evaluated",
+          "residual": 0.2,
+          "weight": 0.1,
+          "assumptions": [
+            "Residual is normalized by a positive declared phase scale."
+          ],
+          "evidence": {
+            "kind": "synthetic_residual",
+            "artifact": "fixture:accepted_normalized_phase"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "accepted_normalized_phase"
+          },
+          "note": "Successfully evaluated; pass does not mean that the residual is small or below a mandatory limit."
+        },
+        {
+          "gate_id": "law.determinant_registered",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "pass",
+          "report_status": "satisfied",
+          "residual": 0.0,
+          "weight": 0.0,
+          "assumptions": [
+            "The determinant implementation matches the declared matrix semantics."
+          ],
+          "evidence": {
+            "kind": "translator_contract",
+            "artifact": "schema.json#matrix.determinant"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "accepted_normalized_phase"
+          },
+          "note": null
+        },
+        {
+          "gate_id": "window.scalar_nonzero",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "pass",
+          "report_status": "satisfied",
+          "residual": 0.0,
+          "weight": 0.0,
+          "assumptions": [
+            "Phase normalization is undefined at zero."
+          ],
+          "evidence": {
+            "kind": "synthetic_fixture",
+            "artifact": "A=diag(1,i)"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "accepted_normalized_phase"
+          },
+          "note": null
+        },
+        {
+          "gate_id": "transition.unit_phase_registered",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "pass",
+          "report_status": "satisfied",
+          "residual": 0.0,
+          "weight": 0.0,
+          "assumptions": [
+            "The phase is quotient-valued rather than a branch-dependent real number."
+          ],
+          "evidence": {
+            "kind": "translator_contract",
+            "artifact": "schema.json#unit_complex.to_phase_class"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "accepted_normalized_phase"
+          },
+          "note": null
+        },
+        {
+          "gate_id": "transition.pi_quotient_isomorphism",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "pass",
+          "report_status": "satisfied",
+          "residual": 0.0,
+          "weight": 0.0,
+          "assumptions": [
+            "Normalization is performed on quotient classes."
+          ],
+          "evidence": {
+            "kind": "translator_contract",
+            "artifact": "schema.json#phase.pi_normalize"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "accepted_normalized_phase"
+          },
+          "note": null
+        },
+        {
+          "gate_id": "observable.adapter_registered",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "pass",
+          "report_status": "satisfied",
+          "residual": 0.0,
+          "weight": 0.0,
+          "assumptions": [
+            "The adapter preserves the quotient-valued phase and declared units."
+          ],
+          "evidence": {
+            "kind": "translator_contract",
+            "artifact": "schema.json#pi_phase.observe"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "accepted_normalized_phase"
+          },
+          "note": null
+        }
+      ],
+      "route_score": 0.398519041085,
+      "route_cost": 0.92,
+      "observable": {
+        "response_map": "pi_phase.observe",
+        "native_space": "phase_observation",
+        "uncertainty": "synthetic normalized residual",
+        "comparison_rule": "diagnostic only; no hard residual ceiling at semantic level"
+      },
+      "verdict": "accepted",
+      "failed_obligations": [],
+      "unresolved_obligations": [],
+      "repair": null,
+      "provenance": {
+        "schema_id": "crystalgate.matrix-phase.synthetic",
+        "schema_version": "0.1.0",
+        "implementation": "gatefinder_demo.py",
+        "implementation_version": "0.1.0"
+      }
+    },
+    {
+      "manifest_version": "crystalgate.route-report.0.1",
+      "claim_id": "accepted_large_soft_residual",
+      "claim": "A lawful determinant-phase route is semantically adjudicated while a large optional mismatch remains visible for ranking.",
+      "context": {
+        "objective": "determinant_phase_observation",
+        "requested_validity_level": "semantic",
+        "profile": "semantic_with_soft_diagnostic",
+        "facts": {
+          "matrix_declared": true,
+          "complex_linear_basis_declared": true,
+          "observable_response_declared": true,
+          "determinant_law_registered": true,
+          "determinant_nonzero": true,
+          "pi_quotient_isomorphism_registered": true,
+          "observable_adapter_registered": true,
+          "scalar_division_type_preserved": true,
+          "unit_phase_translator_registered": true
+        },
+        "residuals": {
+          "phase_mismatch": 25.0
+        }
+      },
+      "nodes": {
+        "source_type": "complex_matrix",
+        "target_type": "phase_observation"
+      },
+      "proposed_route": [
+        "matrix.determinant",
+        "scalar.argument_class",
+        "phase.pi_normalize",
+        "pi_phase.observe"
+      ],
+      "proposed_assessment": "admissible",
+      "searched_routes": [
+        {
+          "translator_ids": [
+            "matrix.determinant",
+            "scalar.phase_normalize",
+            "unit_complex.to_phase_class",
+            "phase.pi_normalize",
+            "pi_phase.observe"
+          ],
+          "route_status": "admissible",
+          "route_cost": 3.4,
+          "failed_gate_ids": [],
+          "unresolved_gate_ids": []
+        },
+        {
+          "translator_ids": [
+            "matrix.determinant",
+            "scalar.argument_class",
+            "phase.pi_normalize",
+            "pi_phase.observe"
+          ],
+          "route_status": "admissible",
+          "route_cost": 3.53,
+          "failed_gate_ids": [],
+          "unresolved_gate_ids": []
+        }
+      ],
+      "selected_route": [
+        {
+          "translator_id": "matrix.determinant",
+          "version": "1.0.0",
+          "source": "complex_matrix",
+          "target": "complex_scalar",
+          "cost": 0.2,
+          "preconditions": [
+            "matrix is square",
+            "determinant law is registered"
+          ],
+          "postconditions": [
+            "output equals det(A) as a complex scalar"
+          ]
+        },
+        {
+          "translator_id": "scalar.argument_class",
+          "version": "1.0.0",
+          "source": "complex_scalar",
+          "target": "phase_class",
+          "cost": 0.5,
+          "preconditions": [
+            "input scalar is nonzero",
+            "argument is quotient-valued"
+          ],
+          "postconditions": [
+            "output is [arg(z)] in R/(2*pi*Z)"
+          ]
+        },
+        {
+          "translator_id": "phase.pi_normalize",
+          "version": "1.0.0",
+          "source": "phase_class",
+          "target": "pi_normalized_phase_class",
+          "cost": 0.1,
+          "preconditions": [
+            "input is a phase class modulo 2*pi"
+          ],
+          "postconditions": [
+            "output is [theta/pi] modulo 2"
+          ]
+        },
+        {
+          "translator_id": "pi_phase.observe",
+          "version": "1.0.0",
+          "source": "pi_normalized_phase_class",
+          "target": "phase_observation",
+          "cost": 0.15,
+          "preconditions": [
+            "terminal report schema is declared"
+          ],
+          "postconditions": [
+            "output is a native phase-report record"
+          ]
+        }
+      ],
+      "selected_route_ids": [
+        "matrix.determinant",
+        "scalar.argument_class",
+        "phase.pi_normalize",
+        "pi_phase.observe"
+      ],
+      "certificates": [
+        {
+          "gate_id": "object.matrix_declared",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "pass",
+          "report_status": "satisfied",
+          "residual": 0.0,
+          "weight": 0.0,
+          "assumptions": [
+            "The input is declared as a finite complex matrix."
+          ],
+          "evidence": {
+            "kind": "schema_record",
+            "artifact": "schema.json#complex_matrix"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "accepted_large_soft_residual"
+          },
+          "note": null
+        },
+        {
+          "gate_id": "basis.complex_linear_declared",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "pass",
+          "report_status": "satisfied",
+          "residual": 0.0,
+          "weight": 0.0,
+          "assumptions": [
+            "Determinant and trace use the declared complex-linear basis family."
+          ],
+          "evidence": {
+            "kind": "schema_record",
+            "artifact": "schema.json#complex-linear"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "accepted_large_soft_residual"
+          },
+          "note": null
+        },
+        {
+          "gate_id": "observable.response_declared",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "pass",
+          "report_status": "satisfied",
+          "residual": 0.0,
+          "weight": 0.0,
+          "assumptions": [
+            "The terminal report schema and comparison rule are declared."
+          ],
+          "evidence": {
+            "kind": "report_contract",
+            "artifact": "schema.json#phase_observation"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "accepted_large_soft_residual"
+          },
+          "note": null
+        },
+        {
+          "gate_id": "observable.phase_mismatch",
+          "requirement": "optional",
+          "severity": "soft",
+          "status": "pass",
+          "report_status": "evaluated",
+          "residual": 25.0,
+          "weight": 0.1,
+          "assumptions": [
+            "Residual is normalized by a positive declared phase scale."
+          ],
+          "evidence": {
+            "kind": "synthetic_residual",
+            "artifact": "fixture:accepted_large_soft_residual"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "accepted_large_soft_residual"
+          },
+          "note": "Successfully evaluated; pass does not mean that the residual is small or below a mandatory limit."
+        },
+        {
+          "gate_id": "law.determinant_registered",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "pass",
+          "report_status": "satisfied",
+          "residual": 0.0,
+          "weight": 0.0,
+          "assumptions": [
+            "The determinant implementation matches the declared matrix semantics."
+          ],
+          "evidence": {
+            "kind": "translator_contract",
+            "artifact": "schema.json#matrix.determinant"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "accepted_large_soft_residual"
+          },
+          "note": null
+        },
+        {
+          "gate_id": "window.argument_nonzero",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "pass",
+          "report_status": "satisfied",
+          "residual": 0.0,
+          "weight": 0.0,
+          "assumptions": [
+            "The quotient-valued argument is undefined at zero."
+          ],
+          "evidence": {
+            "kind": "synthetic_fixture",
+            "artifact": "A=diag(1,i)"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "accepted_large_soft_residual"
+          },
+          "note": null
+        },
+        {
+          "gate_id": "transition.pi_quotient_isomorphism",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "pass",
+          "report_status": "satisfied",
+          "residual": 0.0,
+          "weight": 0.0,
+          "assumptions": [
+            "Normalization is performed on quotient classes."
+          ],
+          "evidence": {
+            "kind": "translator_contract",
+            "artifact": "schema.json#phase.pi_normalize"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "accepted_large_soft_residual"
+          },
+          "note": null
+        },
+        {
+          "gate_id": "observable.adapter_registered",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "pass",
+          "report_status": "satisfied",
+          "residual": 0.0,
+          "weight": 0.0,
+          "assumptions": [
+            "The adapter preserves the quotient-valued phase and declared units."
+          ],
+          "evidence": {
+            "kind": "translator_contract",
+            "artifact": "schema.json#pi_phase.observe"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "accepted_large_soft_residual"
+          },
+          "note": null
+        }
+      ],
+      "route_score": 0.029304915867,
+      "route_cost": 3.53,
+      "observable": {
+        "response_map": "pi_phase.observe",
+        "native_space": "phase_observation",
+        "uncertainty": "synthetic normalized residual",
+        "comparison_rule": "diagnostic only; a mandatory limit would require a hard predicate"
+      },
+      "verdict": "accepted",
+      "failed_obligations": [],
+      "unresolved_obligations": [],
+      "repair": null,
+      "provenance": {
+        "schema_id": "crystalgate.matrix-phase.synthetic",
+        "schema_version": "0.1.0",
+        "implementation": "gatefinder_demo.py",
+        "implementation_version": "0.1.0"
+      }
+    },
+    {
+      "manifest_version": "crystalgate.route-report.0.1",
+      "claim_id": "rerouted_implicit_cast",
+      "claim": "The proposed det(A)/pi phase cast is repaired through determinant, U(1) normalization, quotient phase, and pi normalization.",
+      "context": {
+        "objective": "determinant_phase_observation",
+        "requested_validity_level": "semantic",
+        "profile": "semantic_with_soft_diagnostic",
+        "facts": {
+          "matrix_declared": true,
+          "complex_linear_basis_declared": true,
+          "observable_response_declared": true,
+          "determinant_law_registered": true,
+          "determinant_nonzero": true,
+          "unit_phase_translator_registered": true,
+          "pi_quotient_isomorphism_registered": true,
+          "observable_adapter_registered": true,
+          "scalar_division_type_preserved": true
+        },
+        "residuals": {
+          "phase_mismatch": 0.1
+        }
+      },
+      "nodes": {
+        "source_type": "complex_matrix",
+        "target_type": "phase_observation"
+      },
+      "proposed_route": [
+        "matrix.determinant",
+        "scalar.divide_by_pi",
+        "implicit.scalar_to_pi_phase",
+        "pi_phase.observe"
+      ],
+      "proposed_assessment": "blocked",
+      "searched_routes": [
+        {
+          "translator_ids": [
+            "matrix.determinant",
+            "scalar.phase_normalize",
+            "unit_complex.to_phase_class",
+            "phase.pi_normalize",
+            "pi_phase.observe"
+          ],
+          "route_status": "admissible",
+          "route_cost": 0.91,
+          "failed_gate_ids": [],
+          "unresolved_gate_ids": []
+        },
+        {
+          "translator_ids": [
+            "matrix.determinant",
+            "scalar.argument_class",
+            "phase.pi_normalize",
+            "pi_phase.observe"
+          ],
+          "route_status": "admissible",
+          "route_cost": 1.04,
+          "failed_gate_ids": [],
+          "unresolved_gate_ids": []
+        }
+      ],
+      "selected_route": [
+        {
+          "translator_id": "matrix.determinant",
+          "version": "1.0.0",
+          "source": "complex_matrix",
+          "target": "complex_scalar",
+          "cost": 0.2,
+          "preconditions": [
+            "matrix is square",
+            "determinant law is registered"
+          ],
+          "postconditions": [
+            "output equals det(A) as a complex scalar"
+          ]
+        },
+        {
+          "translator_id": "scalar.phase_normalize",
+          "version": "1.0.0",
+          "source": "complex_scalar",
+          "target": "unit_complex",
+          "cost": 0.25,
+          "preconditions": [
+            "input scalar is nonzero"
+          ],
+          "postconditions": [
+            "output z/|z| lies in U(1)"
+          ]
+        },
+        {
+          "translator_id": "unit_complex.to_phase_class",
+          "version": "1.0.0",
+          "source": "unit_complex",
+          "target": "phase_class",
+          "cost": 0.1,
+          "preconditions": [
+            "input lies in U(1)"
+          ],
+          "postconditions": [
+            "output is a phase class modulo 2*pi"
+          ]
+        },
+        {
+          "translator_id": "phase.pi_normalize",
+          "version": "1.0.0",
+          "source": "phase_class",
+          "target": "pi_normalized_phase_class",
+          "cost": 0.1,
+          "preconditions": [
+            "input is a phase class modulo 2*pi"
+          ],
+          "postconditions": [
+            "output is [theta/pi] modulo 2"
+          ]
+        },
+        {
+          "translator_id": "pi_phase.observe",
+          "version": "1.0.0",
+          "source": "pi_normalized_phase_class",
+          "target": "phase_observation",
+          "cost": 0.15,
+          "preconditions": [
+            "terminal report schema is declared"
+          ],
+          "postconditions": [
+            "output is a native phase-report record"
+          ]
+        }
+      ],
+      "selected_route_ids": [
+        "matrix.determinant",
+        "scalar.phase_normalize",
+        "unit_complex.to_phase_class",
+        "phase.pi_normalize",
+        "pi_phase.observe"
+      ],
+      "certificates": [
+        {
+          "gate_id": "object.matrix_declared",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "pass",
+          "report_status": "satisfied",
+          "residual": 0.0,
+          "weight": 0.0,
+          "assumptions": [
+            "The input is declared as a finite complex matrix."
+          ],
+          "evidence": {
+            "kind": "schema_record",
+            "artifact": "schema.json#complex_matrix"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "rerouted_implicit_cast"
+          },
+          "note": null
+        },
+        {
+          "gate_id": "basis.complex_linear_declared",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "pass",
+          "report_status": "satisfied",
+          "residual": 0.0,
+          "weight": 0.0,
+          "assumptions": [
+            "Determinant and trace use the declared complex-linear basis family."
+          ],
+          "evidence": {
+            "kind": "schema_record",
+            "artifact": "schema.json#complex-linear"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "rerouted_implicit_cast"
+          },
+          "note": null
+        },
+        {
+          "gate_id": "observable.response_declared",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "pass",
+          "report_status": "satisfied",
+          "residual": 0.0,
+          "weight": 0.0,
+          "assumptions": [
+            "The terminal report schema and comparison rule are declared."
+          ],
+          "evidence": {
+            "kind": "report_contract",
+            "artifact": "schema.json#phase_observation"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "rerouted_implicit_cast"
+          },
+          "note": null
+        },
+        {
+          "gate_id": "observable.phase_mismatch",
+          "requirement": "optional",
+          "severity": "soft",
+          "status": "pass",
+          "report_status": "evaluated",
+          "residual": 0.1,
+          "weight": 0.1,
+          "assumptions": [
+            "Residual is normalized by a positive declared phase scale."
+          ],
+          "evidence": {
+            "kind": "synthetic_residual",
+            "artifact": "fixture:rerouted_implicit_cast"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "rerouted_implicit_cast"
+          },
+          "note": "Successfully evaluated; pass does not mean that the residual is small or below a mandatory limit."
+        },
+        {
+          "gate_id": "law.determinant_registered",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "pass",
+          "report_status": "satisfied",
+          "residual": 0.0,
+          "weight": 0.0,
+          "assumptions": [
+            "The determinant implementation matches the declared matrix semantics."
+          ],
+          "evidence": {
+            "kind": "translator_contract",
+            "artifact": "schema.json#matrix.determinant"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "rerouted_implicit_cast"
+          },
+          "note": null
+        },
+        {
+          "gate_id": "window.scalar_nonzero",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "pass",
+          "report_status": "satisfied",
+          "residual": 0.0,
+          "weight": 0.0,
+          "assumptions": [
+            "Phase normalization is undefined at zero."
+          ],
+          "evidence": {
+            "kind": "synthetic_fixture",
+            "artifact": "A=diag(1,i)"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "rerouted_implicit_cast"
+          },
+          "note": null
+        },
+        {
+          "gate_id": "transition.unit_phase_registered",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "pass",
+          "report_status": "satisfied",
+          "residual": 0.0,
+          "weight": 0.0,
+          "assumptions": [
+            "The phase is quotient-valued rather than a branch-dependent real number."
+          ],
+          "evidence": {
+            "kind": "translator_contract",
+            "artifact": "schema.json#unit_complex.to_phase_class"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "rerouted_implicit_cast"
+          },
+          "note": null
+        },
+        {
+          "gate_id": "transition.pi_quotient_isomorphism",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "pass",
+          "report_status": "satisfied",
+          "residual": 0.0,
+          "weight": 0.0,
+          "assumptions": [
+            "Normalization is performed on quotient classes."
+          ],
+          "evidence": {
+            "kind": "translator_contract",
+            "artifact": "schema.json#phase.pi_normalize"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "rerouted_implicit_cast"
+          },
+          "note": null
+        },
+        {
+          "gate_id": "observable.adapter_registered",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "pass",
+          "report_status": "satisfied",
+          "residual": 0.0,
+          "weight": 0.0,
+          "assumptions": [
+            "The adapter preserves the quotient-valued phase and declared units."
+          ],
+          "evidence": {
+            "kind": "translator_contract",
+            "artifact": "schema.json#pi_phase.observe"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "rerouted_implicit_cast"
+          },
+          "note": null
+        }
+      ],
+      "route_score": 0.402524224034,
+      "route_cost": 0.91,
+      "observable": {
+        "response_map": "pi_phase.observe",
+        "native_space": "phase_observation",
+        "uncertainty": "synthetic normalized residual",
+        "comparison_rule": "semantic route must reach the registered report type"
+      },
+      "verdict": "rerouted",
+      "failed_obligations": [],
+      "unresolved_obligations": [],
+      "repair": {
+        "failed_proposed_route": [
+          "matrix.determinant",
+          "scalar.divide_by_pi",
+          "implicit.scalar_to_pi_phase",
+          "pi_phase.observe"
+        ],
+        "alternate_route": [
+          "matrix.determinant",
+          "scalar.phase_normalize",
+          "unit_complex.to_phase_class",
+          "phase.pi_normalize",
+          "pi_phase.observe"
+        ]
+      },
+      "provenance": {
+        "schema_id": "crystalgate.matrix-phase.synthetic",
+        "schema_version": "0.1.0",
+        "implementation": "gatefinder_demo.py",
+        "implementation_version": "0.1.0"
+      }
+    },
+    {
+      "manifest_version": "crystalgate.route-report.0.1",
+      "claim_id": "rejected_singular_matrix",
+      "claim": "A singular matrix is assigned a determinant phase through phase normalization.",
+      "context": {
+        "objective": "determinant_phase_observation",
+        "requested_validity_level": "semantic",
+        "profile": "semantic_with_soft_diagnostic",
+        "facts": {
+          "matrix_declared": true,
+          "complex_linear_basis_declared": true,
+          "observable_response_declared": true,
+          "determinant_law_registered": true,
+          "determinant_nonzero": false,
+          "unit_phase_translator_registered": true,
+          "pi_quotient_isomorphism_registered": true,
+          "observable_adapter_registered": true,
+          "scalar_division_type_preserved": true
+        },
+        "residuals": {
+          "phase_mismatch": 0.0
+        }
+      },
+      "nodes": {
+        "source_type": "complex_matrix",
+        "target_type": "phase_observation"
+      },
+      "proposed_route": [
+        "matrix.determinant",
+        "scalar.phase_normalize",
+        "unit_complex.to_phase_class",
+        "phase.pi_normalize",
+        "pi_phase.observe"
+      ],
+      "proposed_assessment": "blocked",
+      "searched_routes": [
+        {
+          "translator_ids": [
+            "matrix.determinant",
+            "scalar.phase_normalize",
+            "unit_complex.to_phase_class",
+            "phase.pi_normalize",
+            "pi_phase.observe"
+          ],
+          "route_status": "blocked",
+          "route_cost": 0.9,
+          "failed_gate_ids": [
+            "window.scalar_nonzero"
+          ],
+          "unresolved_gate_ids": []
+        },
+        {
+          "translator_ids": [
+            "matrix.determinant",
+            "scalar.argument_class",
+            "phase.pi_normalize",
+            "pi_phase.observe"
+          ],
+          "route_status": "blocked",
+          "route_cost": 1.03,
+          "failed_gate_ids": [
+            "window.argument_nonzero"
+          ],
+          "unresolved_gate_ids": []
+        }
+      ],
+      "selected_route": [
+        {
+          "translator_id": "matrix.determinant",
+          "version": "1.0.0",
+          "source": "complex_matrix",
+          "target": "complex_scalar",
+          "cost": 0.2,
+          "preconditions": [
+            "matrix is square",
+            "determinant law is registered"
+          ],
+          "postconditions": [
+            "output equals det(A) as a complex scalar"
+          ]
+        },
+        {
+          "translator_id": "scalar.phase_normalize",
+          "version": "1.0.0",
+          "source": "complex_scalar",
+          "target": "unit_complex",
+          "cost": 0.25,
+          "preconditions": [
+            "input scalar is nonzero"
+          ],
+          "postconditions": [
+            "output z/|z| lies in U(1)"
+          ]
+        },
+        {
+          "translator_id": "unit_complex.to_phase_class",
+          "version": "1.0.0",
+          "source": "unit_complex",
+          "target": "phase_class",
+          "cost": 0.1,
+          "preconditions": [
+            "input lies in U(1)"
+          ],
+          "postconditions": [
+            "output is a phase class modulo 2*pi"
+          ]
+        },
+        {
+          "translator_id": "phase.pi_normalize",
+          "version": "1.0.0",
+          "source": "phase_class",
+          "target": "pi_normalized_phase_class",
+          "cost": 0.1,
+          "preconditions": [
+            "input is a phase class modulo 2*pi"
+          ],
+          "postconditions": [
+            "output is [theta/pi] modulo 2"
+          ]
+        },
+        {
+          "translator_id": "pi_phase.observe",
+          "version": "1.0.0",
+          "source": "pi_normalized_phase_class",
+          "target": "phase_observation",
+          "cost": 0.15,
+          "preconditions": [
+            "terminal report schema is declared"
+          ],
+          "postconditions": [
+            "output is a native phase-report record"
+          ]
+        }
+      ],
+      "selected_route_ids": [
+        "matrix.determinant",
+        "scalar.phase_normalize",
+        "unit_complex.to_phase_class",
+        "phase.pi_normalize",
+        "pi_phase.observe"
+      ],
+      "certificates": [
+        {
+          "gate_id": "object.matrix_declared",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "pass",
+          "report_status": "satisfied",
+          "residual": 0.0,
+          "weight": 0.0,
+          "assumptions": [
+            "The input is declared as a finite complex matrix."
+          ],
+          "evidence": {
+            "kind": "schema_record",
+            "artifact": "schema.json#complex_matrix"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "rejected_singular_matrix"
+          },
+          "note": null
+        },
+        {
+          "gate_id": "basis.complex_linear_declared",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "pass",
+          "report_status": "satisfied",
+          "residual": 0.0,
+          "weight": 0.0,
+          "assumptions": [
+            "Determinant and trace use the declared complex-linear basis family."
+          ],
+          "evidence": {
+            "kind": "schema_record",
+            "artifact": "schema.json#complex-linear"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "rejected_singular_matrix"
+          },
+          "note": null
+        },
+        {
+          "gate_id": "observable.response_declared",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "pass",
+          "report_status": "satisfied",
+          "residual": 0.0,
+          "weight": 0.0,
+          "assumptions": [
+            "The terminal report schema and comparison rule are declared."
+          ],
+          "evidence": {
+            "kind": "report_contract",
+            "artifact": "schema.json#phase_observation"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "rejected_singular_matrix"
+          },
+          "note": null
+        },
+        {
+          "gate_id": "observable.phase_mismatch",
+          "requirement": "optional",
+          "severity": "soft",
+          "status": "pass",
+          "report_status": "evaluated",
+          "residual": 0.0,
+          "weight": 0.1,
+          "assumptions": [
+            "Residual is normalized by a positive declared phase scale."
+          ],
+          "evidence": {
+            "kind": "synthetic_residual",
+            "artifact": "fixture:rejected_singular_matrix"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "rejected_singular_matrix"
+          },
+          "note": "Successfully evaluated; pass does not mean that the residual is small or below a mandatory limit."
+        },
+        {
+          "gate_id": "law.determinant_registered",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "pass",
+          "report_status": "satisfied",
+          "residual": 0.0,
+          "weight": 0.0,
+          "assumptions": [
+            "The determinant implementation matches the declared matrix semantics."
+          ],
+          "evidence": {
+            "kind": "translator_contract",
+            "artifact": "schema.json#matrix.determinant"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "rejected_singular_matrix"
+          },
+          "note": null
+        },
+        {
+          "gate_id": "window.scalar_nonzero",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "fail",
+          "report_status": "violated",
+          "residual": null,
+          "weight": 0.0,
+          "assumptions": [
+            "Phase normalization is undefined at zero."
+          ],
+          "evidence": {
+            "kind": "synthetic_fixture",
+            "artifact": "A=zeros(2,2)"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "rejected_singular_matrix"
+          },
+          "note": null
+        },
+        {
+          "gate_id": "transition.unit_phase_registered",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "pass",
+          "report_status": "satisfied",
+          "residual": 0.0,
+          "weight": 0.0,
+          "assumptions": [
+            "The phase is quotient-valued rather than a branch-dependent real number."
+          ],
+          "evidence": {
+            "kind": "translator_contract",
+            "artifact": "schema.json#unit_complex.to_phase_class"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "rejected_singular_matrix"
+          },
+          "note": null
+        },
+        {
+          "gate_id": "transition.pi_quotient_isomorphism",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "pass",
+          "report_status": "satisfied",
+          "residual": 0.0,
+          "weight": 0.0,
+          "assumptions": [
+            "Normalization is performed on quotient classes."
+          ],
+          "evidence": {
+            "kind": "translator_contract",
+            "artifact": "schema.json#phase.pi_normalize"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "rejected_singular_matrix"
+          },
+          "note": null
+        },
+        {
+          "gate_id": "observable.adapter_registered",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "pass",
+          "report_status": "satisfied",
+          "residual": 0.0,
+          "weight": 0.0,
+          "assumptions": [
+            "The adapter preserves the quotient-valued phase and declared units."
+          ],
+          "evidence": {
+            "kind": "translator_contract",
+            "artifact": "schema.json#pi_phase.observe"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "rejected_singular_matrix"
+          },
+          "note": null
+        }
+      ],
+      "route_score": 0.406569659741,
+      "route_cost": 0.9,
+      "observable": {
+        "response_map": "pi_phase.observe",
+        "native_space": "phase_observation",
+        "uncertainty": "not reached",
+        "comparison_rule": "normalization requires det(A) != 0"
+      },
+      "verdict": "rejected",
+      "failed_obligations": [
+        "window.scalar_nonzero"
+      ],
+      "unresolved_obligations": [],
+      "repair": null,
+      "provenance": {
+        "schema_id": "crystalgate.matrix-phase.synthetic",
+        "schema_version": "0.1.0",
+        "implementation": "gatefinder_demo.py",
+        "implementation_version": "0.1.0"
+      }
+    },
+    {
+      "manifest_version": "crystalgate.route-report.0.1",
+      "claim_id": "rejected_undeclared_matrix",
+      "claim": "An untyped input is treated as a complex matrix and routed to determinant phase.",
+      "context": {
+        "objective": "determinant_phase_observation",
+        "requested_validity_level": "semantic",
+        "profile": "semantic_with_soft_diagnostic",
+        "facts": {
+          "matrix_declared": false,
+          "complex_linear_basis_declared": true,
+          "observable_response_declared": true,
+          "determinant_law_registered": true,
+          "determinant_nonzero": true,
+          "unit_phase_translator_registered": true,
+          "pi_quotient_isomorphism_registered": true,
+          "observable_adapter_registered": true,
+          "scalar_division_type_preserved": true
+        },
+        "residuals": {
+          "phase_mismatch": 0.0
+        }
+      },
+      "nodes": {
+        "source_type": "complex_matrix",
+        "target_type": "phase_observation"
+      },
+      "proposed_route": [
+        "matrix.determinant",
+        "scalar.argument_class",
+        "phase.pi_normalize",
+        "pi_phase.observe"
+      ],
+      "proposed_assessment": "blocked",
+      "searched_routes": [
+        {
+          "translator_ids": [
+            "matrix.determinant",
+            "scalar.phase_normalize",
+            "unit_complex.to_phase_class",
+            "phase.pi_normalize",
+            "pi_phase.observe"
+          ],
+          "route_status": "blocked",
+          "route_cost": 0.9,
+          "failed_gate_ids": [
+            "object.matrix_declared"
+          ],
+          "unresolved_gate_ids": []
+        },
+        {
+          "translator_ids": [
+            "matrix.determinant",
+            "scalar.argument_class",
+            "phase.pi_normalize",
+            "pi_phase.observe"
+          ],
+          "route_status": "blocked",
+          "route_cost": 1.03,
+          "failed_gate_ids": [
+            "object.matrix_declared"
+          ],
+          "unresolved_gate_ids": []
+        }
+      ],
+      "selected_route": [
+        {
+          "translator_id": "matrix.determinant",
+          "version": "1.0.0",
+          "source": "complex_matrix",
+          "target": "complex_scalar",
+          "cost": 0.2,
+          "preconditions": [
+            "matrix is square",
+            "determinant law is registered"
+          ],
+          "postconditions": [
+            "output equals det(A) as a complex scalar"
+          ]
+        },
+        {
+          "translator_id": "scalar.argument_class",
+          "version": "1.0.0",
+          "source": "complex_scalar",
+          "target": "phase_class",
+          "cost": 0.5,
+          "preconditions": [
+            "input scalar is nonzero",
+            "argument is quotient-valued"
+          ],
+          "postconditions": [
+            "output is [arg(z)] in R/(2*pi*Z)"
+          ]
+        },
+        {
+          "translator_id": "phase.pi_normalize",
+          "version": "1.0.0",
+          "source": "phase_class",
+          "target": "pi_normalized_phase_class",
+          "cost": 0.1,
+          "preconditions": [
+            "input is a phase class modulo 2*pi"
+          ],
+          "postconditions": [
+            "output is [theta/pi] modulo 2"
+          ]
+        },
+        {
+          "translator_id": "pi_phase.observe",
+          "version": "1.0.0",
+          "source": "pi_normalized_phase_class",
+          "target": "phase_observation",
+          "cost": 0.15,
+          "preconditions": [
+            "terminal report schema is declared"
+          ],
+          "postconditions": [
+            "output is a native phase-report record"
+          ]
+        }
+      ],
+      "selected_route_ids": [
+        "matrix.determinant",
+        "scalar.argument_class",
+        "phase.pi_normalize",
+        "pi_phase.observe"
+      ],
+      "certificates": [
+        {
+          "gate_id": "object.matrix_declared",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "fail",
+          "report_status": "violated",
+          "residual": null,
+          "weight": 0.0,
+          "assumptions": [
+            "The input is declared as a finite complex matrix."
+          ],
+          "evidence": {
+            "kind": "negative_fixture",
+            "artifact": "input type intentionally omitted"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "rejected_undeclared_matrix"
+          },
+          "note": null
+        },
+        {
+          "gate_id": "basis.complex_linear_declared",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "pass",
+          "report_status": "satisfied",
+          "residual": 0.0,
+          "weight": 0.0,
+          "assumptions": [
+            "Determinant and trace use the declared complex-linear basis family."
+          ],
+          "evidence": {
+            "kind": "schema_record",
+            "artifact": "schema.json#complex-linear"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "rejected_undeclared_matrix"
+          },
+          "note": null
+        },
+        {
+          "gate_id": "observable.response_declared",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "pass",
+          "report_status": "satisfied",
+          "residual": 0.0,
+          "weight": 0.0,
+          "assumptions": [
+            "The terminal report schema and comparison rule are declared."
+          ],
+          "evidence": {
+            "kind": "report_contract",
+            "artifact": "schema.json#phase_observation"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "rejected_undeclared_matrix"
+          },
+          "note": null
+        },
+        {
+          "gate_id": "observable.phase_mismatch",
+          "requirement": "optional",
+          "severity": "soft",
+          "status": "pass",
+          "report_status": "evaluated",
+          "residual": 0.0,
+          "weight": 0.1,
+          "assumptions": [
+            "Residual is normalized by a positive declared phase scale."
+          ],
+          "evidence": {
+            "kind": "synthetic_residual",
+            "artifact": "fixture:rejected_undeclared_matrix"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "rejected_undeclared_matrix"
+          },
+          "note": "Successfully evaluated; pass does not mean that the residual is small or below a mandatory limit."
+        },
+        {
+          "gate_id": "law.determinant_registered",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "pass",
+          "report_status": "satisfied",
+          "residual": 0.0,
+          "weight": 0.0,
+          "assumptions": [
+            "The determinant implementation matches the declared matrix semantics."
+          ],
+          "evidence": {
+            "kind": "translator_contract",
+            "artifact": "schema.json#matrix.determinant"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "rejected_undeclared_matrix"
+          },
+          "note": null
+        },
+        {
+          "gate_id": "window.argument_nonzero",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "pass",
+          "report_status": "satisfied",
+          "residual": 0.0,
+          "weight": 0.0,
+          "assumptions": [
+            "The quotient-valued argument is undefined at zero."
+          ],
+          "evidence": {
+            "kind": "synthetic_fixture",
+            "artifact": "not adjudicable before object typing"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "rejected_undeclared_matrix"
+          },
+          "note": null
+        },
+        {
+          "gate_id": "transition.pi_quotient_isomorphism",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "pass",
+          "report_status": "satisfied",
+          "residual": 0.0,
+          "weight": 0.0,
+          "assumptions": [
+            "Normalization is performed on quotient classes."
+          ],
+          "evidence": {
+            "kind": "translator_contract",
+            "artifact": "schema.json#phase.pi_normalize"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "rejected_undeclared_matrix"
+          },
+          "note": null
+        },
+        {
+          "gate_id": "observable.adapter_registered",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "pass",
+          "report_status": "satisfied",
+          "residual": 0.0,
+          "weight": 0.0,
+          "assumptions": [
+            "The adapter preserves the quotient-valued phase and declared units."
+          ],
+          "evidence": {
+            "kind": "translator_contract",
+            "artifact": "schema.json#pi_phase.observe"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "rejected_undeclared_matrix"
+          },
+          "note": null
+        }
+      ],
+      "route_score": 0.357006960569,
+      "route_cost": 1.03,
+      "observable": {
+        "response_map": "pi_phase.observe",
+        "native_space": "phase_observation",
+        "uncertainty": "not reached",
+        "comparison_rule": "source object must first be typed"
+      },
+      "verdict": "rejected",
+      "failed_obligations": [
+        "object.matrix_declared"
+      ],
+      "unresolved_obligations": [],
+      "repair": null,
+      "provenance": {
+        "schema_id": "crystalgate.matrix-phase.synthetic",
+        "schema_version": "0.1.0",
+        "implementation": "gatefinder_demo.py",
+        "implementation_version": "0.1.0"
+      }
+    },
+    {
+      "manifest_version": "crystalgate.route-report.0.1",
+      "claim_id": "underdetermined_missing_observable",
+      "claim": "A lawful determinant-phase derivation is proposed, but its native observable response contract has not been supplied.",
+      "context": {
+        "objective": "determinant_phase_observation",
+        "requested_validity_level": "semantic",
+        "profile": "semantic_with_soft_diagnostic",
+        "facts": {
+          "matrix_declared": true,
+          "complex_linear_basis_declared": true,
+          "determinant_law_registered": true,
+          "determinant_nonzero": true,
+          "unit_phase_translator_registered": true,
+          "pi_quotient_isomorphism_registered": true,
+          "observable_adapter_registered": true,
+          "scalar_division_type_preserved": true
+        },
+        "residuals": {
+          "phase_mismatch": 0.3
+        }
+      },
+      "nodes": {
+        "source_type": "complex_matrix",
+        "target_type": "phase_observation"
+      },
+      "proposed_route": [
+        "matrix.determinant",
+        "scalar.phase_normalize",
+        "unit_complex.to_phase_class",
+        "phase.pi_normalize",
+        "pi_phase.observe"
+      ],
+      "proposed_assessment": "potential",
+      "searched_routes": [
+        {
+          "translator_ids": [
+            "matrix.determinant",
+            "scalar.phase_normalize",
+            "unit_complex.to_phase_class",
+            "phase.pi_normalize",
+            "pi_phase.observe"
+          ],
+          "route_status": "potential",
+          "route_cost": 0.93,
+          "failed_gate_ids": [],
+          "unresolved_gate_ids": [
+            "observable.response_declared"
+          ]
+        },
+        {
+          "translator_ids": [
+            "matrix.determinant",
+            "scalar.argument_class",
+            "phase.pi_normalize",
+            "pi_phase.observe"
+          ],
+          "route_status": "potential",
+          "route_cost": 1.06,
+          "failed_gate_ids": [],
+          "unresolved_gate_ids": [
+            "observable.response_declared"
+          ]
+        }
+      ],
+      "selected_route": [
+        {
+          "translator_id": "matrix.determinant",
+          "version": "1.0.0",
+          "source": "complex_matrix",
+          "target": "complex_scalar",
+          "cost": 0.2,
+          "preconditions": [
+            "matrix is square",
+            "determinant law is registered"
+          ],
+          "postconditions": [
+            "output equals det(A) as a complex scalar"
+          ]
+        },
+        {
+          "translator_id": "scalar.phase_normalize",
+          "version": "1.0.0",
+          "source": "complex_scalar",
+          "target": "unit_complex",
+          "cost": 0.25,
+          "preconditions": [
+            "input scalar is nonzero"
+          ],
+          "postconditions": [
+            "output z/|z| lies in U(1)"
+          ]
+        },
+        {
+          "translator_id": "unit_complex.to_phase_class",
+          "version": "1.0.0",
+          "source": "unit_complex",
+          "target": "phase_class",
+          "cost": 0.1,
+          "preconditions": [
+            "input lies in U(1)"
+          ],
+          "postconditions": [
+            "output is a phase class modulo 2*pi"
+          ]
+        },
+        {
+          "translator_id": "phase.pi_normalize",
+          "version": "1.0.0",
+          "source": "phase_class",
+          "target": "pi_normalized_phase_class",
+          "cost": 0.1,
+          "preconditions": [
+            "input is a phase class modulo 2*pi"
+          ],
+          "postconditions": [
+            "output is [theta/pi] modulo 2"
+          ]
+        },
+        {
+          "translator_id": "pi_phase.observe",
+          "version": "1.0.0",
+          "source": "pi_normalized_phase_class",
+          "target": "phase_observation",
+          "cost": 0.15,
+          "preconditions": [
+            "terminal report schema is declared"
+          ],
+          "postconditions": [
+            "output is a native phase-report record"
+          ]
+        }
+      ],
+      "selected_route_ids": [
+        "matrix.determinant",
+        "scalar.phase_normalize",
+        "unit_complex.to_phase_class",
+        "phase.pi_normalize",
+        "pi_phase.observe"
+      ],
+      "certificates": [
+        {
+          "gate_id": "object.matrix_declared",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "pass",
+          "report_status": "satisfied",
+          "residual": 0.0,
+          "weight": 0.0,
+          "assumptions": [
+            "The input is declared as a finite complex matrix."
+          ],
+          "evidence": {
+            "kind": "schema_record",
+            "artifact": "schema.json#complex_matrix"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "underdetermined_missing_observable"
+          },
+          "note": null
+        },
+        {
+          "gate_id": "basis.complex_linear_declared",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "pass",
+          "report_status": "satisfied",
+          "residual": 0.0,
+          "weight": 0.0,
+          "assumptions": [
+            "Determinant and trace use the declared complex-linear basis family."
+          ],
+          "evidence": {
+            "kind": "schema_record",
+            "artifact": "schema.json#complex-linear"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "underdetermined_missing_observable"
+          },
+          "note": null
+        },
+        {
+          "gate_id": "observable.response_declared",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "unknown",
+          "report_status": "unknown",
+          "residual": null,
+          "weight": 0.0,
+          "assumptions": [
+            "The terminal report schema and comparison rule are declared."
+          ],
+          "evidence": {
+            "kind": "not_supplied",
+            "artifact": null
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "underdetermined_missing_observable"
+          },
+          "note": null
+        },
+        {
+          "gate_id": "observable.phase_mismatch",
+          "requirement": "optional",
+          "severity": "soft",
+          "status": "pass",
+          "report_status": "evaluated",
+          "residual": 0.3,
+          "weight": 0.1,
+          "assumptions": [
+            "Residual is normalized by a positive declared phase scale."
+          ],
+          "evidence": {
+            "kind": "synthetic_residual",
+            "artifact": "fixture:underdetermined_missing_observable"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "underdetermined_missing_observable"
+          },
+          "note": "Successfully evaluated; pass does not mean that the residual is small or below a mandatory limit."
+        },
+        {
+          "gate_id": "law.determinant_registered",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "pass",
+          "report_status": "satisfied",
+          "residual": 0.0,
+          "weight": 0.0,
+          "assumptions": [
+            "The determinant implementation matches the declared matrix semantics."
+          ],
+          "evidence": {
+            "kind": "translator_contract",
+            "artifact": "schema.json#matrix.determinant"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "underdetermined_missing_observable"
+          },
+          "note": null
+        },
+        {
+          "gate_id": "window.scalar_nonzero",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "pass",
+          "report_status": "satisfied",
+          "residual": 0.0,
+          "weight": 0.0,
+          "assumptions": [
+            "Phase normalization is undefined at zero."
+          ],
+          "evidence": {
+            "kind": "synthetic_fixture",
+            "artifact": "A=diag(1,i)"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "underdetermined_missing_observable"
+          },
+          "note": null
+        },
+        {
+          "gate_id": "transition.unit_phase_registered",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "pass",
+          "report_status": "satisfied",
+          "residual": 0.0,
+          "weight": 0.0,
+          "assumptions": [
+            "The phase is quotient-valued rather than a branch-dependent real number."
+          ],
+          "evidence": {
+            "kind": "translator_contract",
+            "artifact": "schema.json#unit_complex.to_phase_class"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "underdetermined_missing_observable"
+          },
+          "note": null
+        },
+        {
+          "gate_id": "transition.pi_quotient_isomorphism",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "pass",
+          "report_status": "satisfied",
+          "residual": 0.0,
+          "weight": 0.0,
+          "assumptions": [
+            "Normalization is performed on quotient classes."
+          ],
+          "evidence": {
+            "kind": "translator_contract",
+            "artifact": "schema.json#phase.pi_normalize"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "underdetermined_missing_observable"
+          },
+          "note": null
+        },
+        {
+          "gate_id": "observable.adapter_registered",
+          "requirement": "required",
+          "severity": "hard",
+          "status": "pass",
+          "report_status": "satisfied",
+          "residual": 0.0,
+          "weight": 0.0,
+          "assumptions": [
+            "The adapter preserves the quotient-valued phase and declared units."
+          ],
+          "evidence": {
+            "kind": "translator_contract",
+            "artifact": "schema.json#pi_phase.observe"
+          },
+          "provenance": {
+            "evaluator": "minimal_gatefinder",
+            "version": "0.1.0",
+            "claim_id": "underdetermined_missing_observable"
+          },
+          "note": null
+        }
+      ],
+      "route_score": 0.394553710372,
+      "route_cost": 0.93,
+      "observable": {
+        "response_map": null,
+        "native_space": "phase_observation",
+        "uncertainty": "unknown",
+        "comparison_rule": null
+      },
+      "verdict": "underdetermined",
+      "failed_obligations": [],
+      "unresolved_obligations": [
+        "observable.response_declared"
+      ],
+      "repair": {
+        "unresolved_gate_ids": [
+          "observable.response_declared"
+        ]
+      },
+      "provenance": {
+        "schema_id": "crystalgate.matrix-phase.synthetic",
+        "schema_version": "0.1.0",
+        "implementation": "gatefinder_demo.py",
+        "implementation_version": "0.1.0"
+      }
+    }
+  ]
+}

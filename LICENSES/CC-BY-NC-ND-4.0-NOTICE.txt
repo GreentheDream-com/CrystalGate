@@ -1,0 +1,6 @@
+Creative Commons Attribution–NonCommercial–NoDerivatives 4.0 International
+SPDX-style identifier: CC-BY-NC-ND-4.0
+Canonical license page: https://creativecommons.org/licenses/by-nc-nd/4.0/
+Legal code: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode.en
+
+This repository applies that license only to the materials identified in LICENSE.md as paper and non-code research materials.

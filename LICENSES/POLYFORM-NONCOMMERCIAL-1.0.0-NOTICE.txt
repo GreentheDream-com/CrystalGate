@@ -1,0 +1,9 @@
+PolyForm Noncommercial License 1.0.0
+Canonical license page and official terms:
+https://polyformproject.org/licenses/noncommercial/1.0.0
+
+This repository applies that license only to the software and executable artifacts identified in LICENSE.md.
+
+Required Notice: Copyright © 2026 Derrick Covington.
+Required Notice: Published through Green The Dream Research Lab.
+Required Notice: Commercial licensing contact: derrick@greenthedream.com.

@@ -1,0 +1,165 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="930" viewBox="0 0 1600 930" role="img" aria-labelledby="title desc">
+  <title id="title">Three-layer CrystalGate architecture and GateFinder outcomes</title>
+  <desc id="desc">A raw claim passes through Gate Grammar, schema-relative address classes in the Gate Crystal, translator and gate evaluation in GateFinder, and then to native observables. Missing evidence or an open registry yields underdetermination; contradiction or route failure in a closed complete schema yields rejection.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f8fbff"/>
+      <stop offset="1" stop-color="#edf4f7"/>
+    </linearGradient>
+    <linearGradient id="grammar" x1="0" x2="1">
+      <stop offset="0" stop-color="#173f5f"/>
+      <stop offset="1" stop-color="#20639b"/>
+    </linearGradient>
+    <linearGradient id="crystal" x1="0" x2="1">
+      <stop offset="0" stop-color="#3b6b74"/>
+      <stop offset="1" stop-color="#2a9d8f"/>
+    </linearGradient>
+    <linearGradient id="finder" x1="0" x2="1">
+      <stop offset="0" stop-color="#5c4b8a"/>
+      <stop offset="1" stop-color="#8a62b0"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="5" stdDeviation="8" flood-color="#17324d" flood-opacity="0.14"/>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#385a70"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#20866f"/>
+    </marker>
+    <marker id="arrowRed" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#b42338"/>
+    </marker>
+    <marker id="arrowAmber" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#c98819"/>
+    </marker>
+    <style>
+      .title { font: 700 34px Inter, Segoe UI, Arial, sans-serif; fill: #102a43; }
+      .subtitle { font: 500 18px Inter, Segoe UI, Arial, sans-serif; fill: #52677c; }
+      .band { font: 700 24px Inter, Segoe UI, Arial, sans-serif; fill: #fff; letter-spacing: .4px; }
+      .boxTitle { font: 700 20px Inter, Segoe UI, Arial, sans-serif; fill: #17324d; }
+      .boxText { font: 500 16px Inter, Segoe UI, Arial, sans-serif; fill: #52677c; }
+      .smallCaps { font: 700 14px Inter, Segoe UI, Arial, sans-serif; fill: #667b8c; letter-spacing: 1.3px; }
+      .outcome { font: 700 18px Inter, Segoe UI, Arial, sans-serif; }
+      .edge { font: 650 15px Inter, Segoe UI, Arial, sans-serif; fill: #385a70; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="930" rx="24" fill="url(#background)"/>
+  <text x="70" y="62" class="title">CrystalGate: from raw claim to native observable</text>
+  <text x="70" y="96" class="subtitle">Grammar supplies semantic discipline; the Crystal supplies schema-relative locations; GateFinder supplies evidence-bearing routing.</text>
+
+  <g filter="url(#shadow)">
+    <rect x="70" y="137" width="1460" height="175" rx="22" fill="#ffffff" stroke="#aac1d1" stroke-width="2"/>
+    <rect x="70" y="137" width="225" height="175" rx="22" fill="url(#grammar)"/>
+    <path d="M273 137 H295 V312 H273 Q295 292 295 269 V180 Q295 157 273 137Z" fill="url(#grammar)"/>
+  </g>
+  <text x="182" y="205" text-anchor="middle" class="band">GATE</text>
+  <text x="182" y="237" text-anchor="middle" class="band">GRAMMAR</text>
+  <text x="182" y="274" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15" fill="#d9efff">semantic formation</text>
+
+  <g>
+    <rect x="345" y="175" width="240" height="100" rx="15" fill="#f4f8fb" stroke="#7fa3bb" stroke-width="2"/>
+    <text x="465" y="210" text-anchor="middle" class="boxTitle">Expose arrows</text>
+    <text x="465" y="238" text-anchor="middle" class="boxText">decompose the claim</text>
+    <text x="465" y="260" text-anchor="middle" class="boxText">into nodes and edges</text>
+
+    <rect x="650" y="175" width="240" height="100" rx="15" fill="#f4f8fb" stroke="#7fa3bb" stroke-width="2"/>
+    <text x="770" y="210" text-anchor="middle" class="boxTitle">Assign meaning</text>
+    <text x="770" y="238" text-anchor="middle" class="boxText">type · basis · units</text>
+    <text x="770" y="260" text-anchor="middle" class="boxText">validity region</text>
+
+    <rect x="955" y="175" width="240" height="100" rx="15" fill="#f4f8fb" stroke="#7fa3bb" stroke-width="2"/>
+    <text x="1075" y="210" text-anchor="middle" class="boxTitle">Choose profile</text>
+    <text x="1075" y="238" text-anchor="middle" class="boxText">required · optional</text>
+    <text x="1075" y="260" text-anchor="middle" class="boxText">not applicable</text>
+
+    <rect x="1260" y="175" width="220" height="100" rx="15" fill="#f4f8fb" stroke="#7fa3bb" stroke-width="2"/>
+    <text x="1370" y="210" text-anchor="middle" class="boxTitle">Set target</text>
+    <text x="1370" y="238" text-anchor="middle" class="boxText">proof, measurement,</text>
+    <text x="1370" y="260" text-anchor="middle" class="boxText">or benchmark space</text>
+  </g>
+
+  <path d="M585 225 H638" stroke="#385a70" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M890 225 H943" stroke="#385a70" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M1195 225 H1248" stroke="#385a70" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <g filter="url(#shadow)">
+    <rect x="70" y="347" width="1460" height="170" rx="22" fill="#ffffff" stroke="#91c7bf" stroke-width="2"/>
+    <rect x="70" y="347" width="225" height="170" rx="22" fill="url(#crystal)"/>
+    <path d="M273 347 H295 V517 H273 Q295 497 295 474 V390 Q295 367 273 347Z" fill="url(#crystal)"/>
+  </g>
+  <text x="182" y="414" text-anchor="middle" class="band">GATE</text>
+  <text x="182" y="446" text-anchor="middle" class="band">CRYSTAL</text>
+  <text x="182" y="483" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15" fill="#dffff8">semantic quotient graph</text>
+
+  <text x="345" y="385" class="smallCaps">SURFACE EXPRESSIONS</text>
+  <rect x="345" y="404" width="270" height="76" rx="14" fill="#f2faf8" stroke="#57a99b" stroke-width="2"/>
+  <text x="480" y="436" text-anchor="middle" class="boxTitle">Presentation record</text>
+  <text x="480" y="462" text-anchor="middle" class="boxText">symbols · coordinates · layout</text>
+
+  <path d="M615 442 H688" stroke="#20866f" stroke-width="3" marker-end="url(#arrowGreen)"/>
+  <text x="652" y="427" text-anchor="middle" class="edge">α<tspan baseline-shift="sub" font-size="11">Σ</tspan></text>
+
+  <rect x="700" y="390" width="385" height="104" rx="18" fill="#e7f6f3" stroke="#2a9d8f" stroke-width="3"/>
+  <text x="892" y="425" text-anchor="middle" class="boxTitle">Schema-relative address class</text>
+  <text x="892" y="453" text-anchor="middle" class="boxText">domain · type · basis family · facet</text>
+  <text x="892" y="477" text-anchor="middle" class="boxText">window · boundary policy · output space</text>
+
+  <path d="M1085 442 H1158" stroke="#20866f" stroke-width="3" marker-end="url(#arrowGreen)"/>
+
+  <rect x="1170" y="404" width="310" height="76" rx="14" fill="#f2faf8" stroke="#57a99b" stroke-width="2"/>
+  <text x="1325" y="436" text-anchor="middle" class="boxTitle">Typed translator graph</text>
+  <text x="1325" y="462" text-anchor="middle" class="boxText">semantic labels · partial maps · contracts</text>
+
+  <g filter="url(#shadow)">
+    <rect x="70" y="552" width="1460" height="185" rx="22" fill="#ffffff" stroke="#b8a7d1" stroke-width="2"/>
+    <rect x="70" y="552" width="225" height="185" rx="22" fill="url(#finder)"/>
+    <path d="M273 552 H295 V737 H273 Q295 717 295 694 V595 Q295 572 273 552Z" fill="url(#finder)"/>
+  </g>
+  <text x="182" y="625" text-anchor="middle" class="band">GATEFINDER</text>
+  <text x="182" y="662" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15" fill="#f0e7ff">certify · prune · route</text>
+
+  <rect x="345" y="592" width="270" height="105" rx="16" fill="#f7f3fb" stroke="#9279b5" stroke-width="2"/>
+  <text x="480" y="624" text-anchor="middle" class="boxTitle">Evaluate certificates</text>
+  <text x="480" y="652" text-anchor="middle" class="boxText">pass · fail · unknown · N/A</text>
+  <text x="480" y="677" text-anchor="middle" class="boxText">assumptions · evidence · residual</text>
+
+  <path d="M615 644 H688" stroke="#385a70" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="700" y="592" width="270" height="105" rx="16" fill="#f7f3fb" stroke="#9279b5" stroke-width="2"/>
+  <text x="835" y="624" text-anchor="middle" class="boxTitle">Constrained search</text>
+  <text x="835" y="652" text-anchor="middle" class="boxText">remove required hard failures</text>
+  <text x="835" y="677" text-anchor="middle" class="boxText">rank normalized residuals</text>
+
+  <path d="M970 644 H1043" stroke="#385a70" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="1055" y="592" width="425" height="105" rx="16" fill="#f7f3fb" stroke="#9279b5" stroke-width="2"/>
+  <text x="1267" y="624" text-anchor="middle" class="boxTitle">Observable closure</text>
+  <text x="1267" y="652" text-anchor="middle" class="boxText">response map · uncertainty · tolerance</text>
+  <text x="1267" y="677" text-anchor="middle" class="boxText">native proof, measurement, or benchmark</text>
+
+  <path d="M800 312 V337" stroke="#385a70" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M800 517 V542" stroke="#385a70" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <text x="70" y="791" class="smallCaps">ROUTE OUTCOMES</text>
+  <g filter="url(#shadow)">
+    <rect x="70" y="812" width="325" height="78" rx="16" fill="#e9f8f2" stroke="#20866f" stroke-width="2.5"/>
+    <rect x="445" y="812" width="325" height="78" rx="16" fill="#eef4ff" stroke="#3c6eaf" stroke-width="2.5"/>
+    <rect x="820" y="812" width="325" height="78" rx="16" fill="#fff8e6" stroke="#c98819" stroke-width="2.5"/>
+    <rect x="1195" y="812" width="335" height="78" rx="16" fill="#fff2f3" stroke="#b42338" stroke-width="2.5"/>
+  </g>
+  <text x="232" y="846" text-anchor="middle" class="outcome" fill="#176d5b">ACCEPTED</text>
+  <text x="232" y="871" text-anchor="middle" class="boxText">proposed route closes</text>
+  <text x="607" y="846" text-anchor="middle" class="outcome" fill="#315f9b">REROUTED</text>
+  <text x="607" y="871" text-anchor="middle" class="boxText">alternate route closes</text>
+  <text x="982" y="846" text-anchor="middle" class="outcome" fill="#8a5b05">UNDERDETERMINED</text>
+  <text x="982" y="871" text-anchor="middle" class="boxText">missing evidence or open registry</text>
+  <text x="1362" y="846" text-anchor="middle" class="outcome" fill="#9d2435">REJECTED</text>
+  <text x="1362" y="871" text-anchor="middle" class="boxText">contradiction / none in closed schema</text>
+
+  <path d="M1267 697 C1267 770 232 770 232 802" fill="none" stroke="#20866f" stroke-width="3" marker-end="url(#arrowGreen)"/>
+  <path d="M835 697 C835 770 607 770 607 802" fill="none" stroke="#3c6eaf" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M480 697 C480 780 982 760 982 802" fill="none" stroke="#c98819" stroke-width="3" stroke-dasharray="8 6" marker-end="url(#arrowAmber)"/>
+  <path d="M480 697 C480 790 1362 760 1362 802" fill="none" stroke="#b42338" stroke-width="3" stroke-dasharray="8 6" marker-end="url(#arrowRed)"/>
+</svg>

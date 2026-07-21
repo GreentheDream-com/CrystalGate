@@ -1,0 +1,286 @@
+{
+  "artifact_version": "0.1.0",
+  "artifact_license": {
+    "copyright": "Copyright © 2026 Derrick Covington.",
+    "published_through": "Green The Dream Research Lab",
+    "license": "CC BY-NC-ND 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+    "commercial_and_adaptation_permissions": "derrick@greenthedream.com",
+    "required_notices": [
+      "Copyright © 2026 Derrick Covington.",
+      "Published through Green The Dream Research Lab."
+    ]
+  },
+  "claims": [
+    {
+      "id": "accepted_normalized_phase",
+      "statement": "A nonsingular complex matrix is routed to a pi-normalized determinant-phase report through explicit normalization.",
+      "objective": "determinant_phase_observation",
+      "requested_validity_level": "semantic",
+      "profile": "semantic_with_soft_diagnostic",
+      "source_type": "complex_matrix",
+      "target_type": "phase_observation",
+      "proposed_route": [
+        "matrix.determinant",
+        "scalar.phase_normalize",
+        "unit_complex.to_phase_class",
+        "phase.pi_normalize",
+        "pi_phase.observe"
+      ],
+      "facts": {
+        "matrix_declared": true,
+        "complex_linear_basis_declared": true,
+        "observable_response_declared": true,
+        "determinant_law_registered": true,
+        "determinant_nonzero": true,
+        "unit_phase_translator_registered": true,
+        "pi_quotient_isomorphism_registered": true,
+        "observable_adapter_registered": true,
+        "scalar_division_type_preserved": true
+      },
+      "residuals": {"phase_mismatch": 0.2},
+      "evidence": {
+        "matrix_declared": {"kind": "schema_record", "artifact": "schema.json#complex_matrix"},
+        "complex_linear_basis_declared": {"kind": "schema_record", "artifact": "schema.json#complex-linear"},
+        "observable_response_declared": {"kind": "report_contract", "artifact": "schema.json#phase_observation"},
+        "determinant_law_registered": {"kind": "translator_contract", "artifact": "schema.json#matrix.determinant"},
+        "determinant_nonzero": {"kind": "synthetic_fixture", "artifact": "A=diag(1,i)"},
+        "unit_phase_translator_registered": {"kind": "translator_contract", "artifact": "schema.json#unit_complex.to_phase_class"},
+        "pi_quotient_isomorphism_registered": {"kind": "translator_contract", "artifact": "schema.json#phase.pi_normalize"},
+        "observable_adapter_registered": {"kind": "translator_contract", "artifact": "schema.json#pi_phase.observe"},
+        "phase_mismatch": {"kind": "synthetic_residual", "artifact": "fixture:accepted_normalized_phase"}
+      },
+      "observable": {
+        "response_map": "pi_phase.observe",
+        "native_space": "phase_observation",
+        "uncertainty": "synthetic normalized residual",
+        "comparison_rule": "diagnostic only; no hard residual ceiling at semantic level"
+      },
+      "expected_verdict": "accepted"
+    },
+    {
+      "id": "accepted_large_soft_residual",
+      "statement": "A lawful determinant-phase route is semantically adjudicated while a large optional mismatch remains visible for ranking.",
+      "objective": "determinant_phase_observation",
+      "requested_validity_level": "semantic",
+      "profile": "semantic_with_soft_diagnostic",
+      "source_type": "complex_matrix",
+      "target_type": "phase_observation",
+      "proposed_route": [
+        "matrix.determinant",
+        "scalar.argument_class",
+        "phase.pi_normalize",
+        "pi_phase.observe"
+      ],
+      "facts": {
+        "matrix_declared": true,
+        "complex_linear_basis_declared": true,
+        "observable_response_declared": true,
+        "determinant_law_registered": true,
+        "determinant_nonzero": true,
+        "pi_quotient_isomorphism_registered": true,
+        "observable_adapter_registered": true,
+        "scalar_division_type_preserved": true,
+        "unit_phase_translator_registered": true
+      },
+      "residuals": {"phase_mismatch": 25.0},
+      "evidence": {
+        "matrix_declared": {"kind": "schema_record", "artifact": "schema.json#complex_matrix"},
+        "complex_linear_basis_declared": {"kind": "schema_record", "artifact": "schema.json#complex-linear"},
+        "observable_response_declared": {"kind": "report_contract", "artifact": "schema.json#phase_observation"},
+        "determinant_law_registered": {"kind": "translator_contract", "artifact": "schema.json#matrix.determinant"},
+        "determinant_nonzero": {"kind": "synthetic_fixture", "artifact": "A=diag(1,i)"},
+        "pi_quotient_isomorphism_registered": {"kind": "translator_contract", "artifact": "schema.json#phase.pi_normalize"},
+        "observable_adapter_registered": {"kind": "translator_contract", "artifact": "schema.json#pi_phase.observe"},
+        "phase_mismatch": {"kind": "synthetic_residual", "artifact": "fixture:accepted_large_soft_residual"}
+      },
+      "observable": {
+        "response_map": "pi_phase.observe",
+        "native_space": "phase_observation",
+        "uncertainty": "synthetic normalized residual",
+        "comparison_rule": "diagnostic only; a mandatory limit would require a hard predicate"
+      },
+      "expected_verdict": "accepted"
+    },
+    {
+      "id": "rerouted_implicit_cast",
+      "statement": "The proposed det(A)/pi phase cast is repaired through determinant, U(1) normalization, quotient phase, and pi normalization.",
+      "objective": "determinant_phase_observation",
+      "requested_validity_level": "semantic",
+      "profile": "semantic_with_soft_diagnostic",
+      "source_type": "complex_matrix",
+      "target_type": "phase_observation",
+      "proposed_route": [
+        "matrix.determinant",
+        "scalar.divide_by_pi",
+        "implicit.scalar_to_pi_phase",
+        "pi_phase.observe"
+      ],
+      "facts": {
+        "matrix_declared": true,
+        "complex_linear_basis_declared": true,
+        "observable_response_declared": true,
+        "determinant_law_registered": true,
+        "determinant_nonzero": true,
+        "unit_phase_translator_registered": true,
+        "pi_quotient_isomorphism_registered": true,
+        "observable_adapter_registered": true,
+        "scalar_division_type_preserved": true
+      },
+      "residuals": {"phase_mismatch": 0.1},
+      "evidence": {
+        "matrix_declared": {"kind": "schema_record", "artifact": "schema.json#complex_matrix"},
+        "complex_linear_basis_declared": {"kind": "schema_record", "artifact": "schema.json#complex-linear"},
+        "observable_response_declared": {"kind": "report_contract", "artifact": "schema.json#phase_observation"},
+        "determinant_law_registered": {"kind": "translator_contract", "artifact": "schema.json#matrix.determinant"},
+        "determinant_nonzero": {"kind": "synthetic_fixture", "artifact": "A=diag(1,i)"},
+        "unit_phase_translator_registered": {"kind": "translator_contract", "artifact": "schema.json#unit_complex.to_phase_class"},
+        "pi_quotient_isomorphism_registered": {"kind": "translator_contract", "artifact": "schema.json#phase.pi_normalize"},
+        "observable_adapter_registered": {"kind": "translator_contract", "artifact": "schema.json#pi_phase.observe"},
+        "scalar_division_type_preserved": {"kind": "type_rule", "artifact": "schema.json#scalar.divide_by_pi"},
+        "phase_mismatch": {"kind": "synthetic_residual", "artifact": "fixture:rerouted_implicit_cast"}
+      },
+      "observable": {
+        "response_map": "pi_phase.observe",
+        "native_space": "phase_observation",
+        "uncertainty": "synthetic normalized residual",
+        "comparison_rule": "semantic route must reach the registered report type"
+      },
+      "expected_verdict": "rerouted"
+    },
+    {
+      "id": "rejected_singular_matrix",
+      "statement": "A singular matrix is assigned a determinant phase through phase normalization.",
+      "objective": "determinant_phase_observation",
+      "requested_validity_level": "semantic",
+      "profile": "semantic_with_soft_diagnostic",
+      "source_type": "complex_matrix",
+      "target_type": "phase_observation",
+      "proposed_route": [
+        "matrix.determinant",
+        "scalar.phase_normalize",
+        "unit_complex.to_phase_class",
+        "phase.pi_normalize",
+        "pi_phase.observe"
+      ],
+      "facts": {
+        "matrix_declared": true,
+        "complex_linear_basis_declared": true,
+        "observable_response_declared": true,
+        "determinant_law_registered": true,
+        "determinant_nonzero": false,
+        "unit_phase_translator_registered": true,
+        "pi_quotient_isomorphism_registered": true,
+        "observable_adapter_registered": true,
+        "scalar_division_type_preserved": true
+      },
+      "residuals": {"phase_mismatch": 0.0},
+      "evidence": {
+        "matrix_declared": {"kind": "schema_record", "artifact": "schema.json#complex_matrix"},
+        "complex_linear_basis_declared": {"kind": "schema_record", "artifact": "schema.json#complex-linear"},
+        "observable_response_declared": {"kind": "report_contract", "artifact": "schema.json#phase_observation"},
+        "determinant_law_registered": {"kind": "translator_contract", "artifact": "schema.json#matrix.determinant"},
+        "determinant_nonzero": {"kind": "synthetic_fixture", "artifact": "A=zeros(2,2)"},
+        "unit_phase_translator_registered": {"kind": "translator_contract", "artifact": "schema.json#unit_complex.to_phase_class"},
+        "pi_quotient_isomorphism_registered": {"kind": "translator_contract", "artifact": "schema.json#phase.pi_normalize"},
+        "observable_adapter_registered": {"kind": "translator_contract", "artifact": "schema.json#pi_phase.observe"},
+        "phase_mismatch": {"kind": "synthetic_residual", "artifact": "fixture:rejected_singular_matrix"}
+      },
+      "observable": {
+        "response_map": "pi_phase.observe",
+        "native_space": "phase_observation",
+        "uncertainty": "not reached",
+        "comparison_rule": "normalization requires det(A) != 0"
+      },
+      "expected_verdict": "rejected"
+    },
+    {
+      "id": "rejected_undeclared_matrix",
+      "statement": "An untyped input is treated as a complex matrix and routed to determinant phase.",
+      "objective": "determinant_phase_observation",
+      "requested_validity_level": "semantic",
+      "profile": "semantic_with_soft_diagnostic",
+      "source_type": "complex_matrix",
+      "target_type": "phase_observation",
+      "proposed_route": [
+        "matrix.determinant",
+        "scalar.argument_class",
+        "phase.pi_normalize",
+        "pi_phase.observe"
+      ],
+      "facts": {
+        "matrix_declared": false,
+        "complex_linear_basis_declared": true,
+        "observable_response_declared": true,
+        "determinant_law_registered": true,
+        "determinant_nonzero": true,
+        "unit_phase_translator_registered": true,
+        "pi_quotient_isomorphism_registered": true,
+        "observable_adapter_registered": true,
+        "scalar_division_type_preserved": true
+      },
+      "residuals": {"phase_mismatch": 0.0},
+      "evidence": {
+        "matrix_declared": {"kind": "negative_fixture", "artifact": "input type intentionally omitted"},
+        "complex_linear_basis_declared": {"kind": "schema_record", "artifact": "schema.json#complex-linear"},
+        "observable_response_declared": {"kind": "report_contract", "artifact": "schema.json#phase_observation"},
+        "determinant_law_registered": {"kind": "translator_contract", "artifact": "schema.json#matrix.determinant"},
+        "determinant_nonzero": {"kind": "synthetic_fixture", "artifact": "not adjudicable before object typing"},
+        "pi_quotient_isomorphism_registered": {"kind": "translator_contract", "artifact": "schema.json#phase.pi_normalize"},
+        "observable_adapter_registered": {"kind": "translator_contract", "artifact": "schema.json#pi_phase.observe"},
+        "phase_mismatch": {"kind": "synthetic_residual", "artifact": "fixture:rejected_undeclared_matrix"}
+      },
+      "observable": {
+        "response_map": "pi_phase.observe",
+        "native_space": "phase_observation",
+        "uncertainty": "not reached",
+        "comparison_rule": "source object must first be typed"
+      },
+      "expected_verdict": "rejected"
+    },
+    {
+      "id": "underdetermined_missing_observable",
+      "statement": "A lawful determinant-phase derivation is proposed, but its native observable response contract has not been supplied.",
+      "objective": "determinant_phase_observation",
+      "requested_validity_level": "semantic",
+      "profile": "semantic_with_soft_diagnostic",
+      "source_type": "complex_matrix",
+      "target_type": "phase_observation",
+      "proposed_route": [
+        "matrix.determinant",
+        "scalar.phase_normalize",
+        "unit_complex.to_phase_class",
+        "phase.pi_normalize",
+        "pi_phase.observe"
+      ],
+      "facts": {
+        "matrix_declared": true,
+        "complex_linear_basis_declared": true,
+        "determinant_law_registered": true,
+        "determinant_nonzero": true,
+        "unit_phase_translator_registered": true,
+        "pi_quotient_isomorphism_registered": true,
+        "observable_adapter_registered": true,
+        "scalar_division_type_preserved": true
+      },
+      "residuals": {"phase_mismatch": 0.3},
+      "evidence": {
+        "matrix_declared": {"kind": "schema_record", "artifact": "schema.json#complex_matrix"},
+        "complex_linear_basis_declared": {"kind": "schema_record", "artifact": "schema.json#complex-linear"},
+        "determinant_law_registered": {"kind": "translator_contract", "artifact": "schema.json#matrix.determinant"},
+        "determinant_nonzero": {"kind": "synthetic_fixture", "artifact": "A=diag(1,i)"},
+        "unit_phase_translator_registered": {"kind": "translator_contract", "artifact": "schema.json#unit_complex.to_phase_class"},
+        "pi_quotient_isomorphism_registered": {"kind": "translator_contract", "artifact": "schema.json#phase.pi_normalize"},
+        "observable_adapter_registered": {"kind": "translator_contract", "artifact": "schema.json#pi_phase.observe"},
+        "phase_mismatch": {"kind": "synthetic_residual", "artifact": "fixture:underdetermined_missing_observable"}
+      },
+      "observable": {
+        "response_map": null,
+        "native_space": "phase_observation",
+        "uncertainty": "unknown",
+        "comparison_rule": null
+      },
+      "expected_verdict": "underdetermined"
+    }
+  ]
+}

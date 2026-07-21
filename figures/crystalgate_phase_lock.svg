@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="840" viewBox="0 0 1600 840" role="img" aria-labelledby="title desc">
+  <title id="title">Adler phase-locking window, equilibria, and critical slowing</title>
+  <desc id="desc">The left panel plots the Adler vector field delta dot equals 0.4 minus sine delta. It marks the stable and unstable fixed points and directional flow. The right panel plots normalized relaxation time against absolute detuning divided by coupling, diverging at the locking boundary.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f8fbff"/>
+      <stop offset="1" stop-color="#edf4f7"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#17324d" flood-opacity="0.14"/>
+    </filter>
+    <marker id="flowArrow" markerWidth="11" markerHeight="11" refX="9" refY="5.5" orient="auto">
+      <path d="M0,0 L11,5.5 L0,11 z" fill="#356b86"/>
+    </marker>
+    <marker id="riseArrow" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto">
+      <path d="M0,0 L14,7 L0,14 z" fill="#7a58a6"/>
+    </marker>
+    <style>
+      .title { font: 700 34px Inter, Segoe UI, Arial, sans-serif; fill: #102a43; }
+      .subtitle { font: 500 18px Inter, Segoe UI, Arial, sans-serif; fill: #52677c; }
+      .panelTitle { font: 700 21px Inter, Segoe UI, Arial, sans-serif; fill: #17324d; }
+      .axis { font: 500 15px Inter, Segoe UI, Arial, sans-serif; fill: #52677c; }
+      .math { font: 600 18px Cambria Math, STIX Two Math, Georgia, serif; fill: #17324d; }
+      .note { font: 600 15px Inter, Segoe UI, Arial, sans-serif; fill: #52677c; }
+      .stable { font: 700 15px Inter, Segoe UI, Arial, sans-serif; fill: #16705b; }
+      .unstable { font: 700 15px Inter, Segoe UI, Arial, sans-serif; fill: #a22a3d; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="840" rx="24" fill="url(#bg)"/>
+  <text x="70" y="62" class="title">Phase locking: admissible window and loss of robustness</text>
+  <text x="70" y="96" class="subtitle">Analytical audit of δ̇ = Δω − K sin δ for Δω/K = 0.4; no empirical data are shown.</text>
+
+  <g filter="url(#shadow)">
+    <rect x="70" y="132" width="910" height="570" rx="22" fill="#ffffff" stroke="#9ab7c8" stroke-width="2"/>
+    <rect x="1010" y="132" width="520" height="570" rx="22" fill="#ffffff" stroke="#9ab7c8" stroke-width="2"/>
+  </g>
+
+  <text x="110" y="174" class="panelTitle">A · Circular vector field and fixed points</text>
+  <text x="1048" y="174" class="panelTitle">B · Critical slowing at the window edge</text>
+
+  <!-- Left panel grid and axes -->
+  <g stroke="#dce7ed" stroke-width="1.5">
+    <line x1="160" y1="197" x2="930" y2="197"/>
+    <line x1="160" y1="375" x2="930" y2="375"/>
+    <line x1="160" y1="446" x2="930" y2="446"/>
+    <line x1="160" y1="552" x2="930" y2="552"/>
+    <line x1="160" y1="197" x2="160" y2="570"/>
+    <line x1="353" y1="197" x2="353" y2="570"/>
+    <line x1="545" y1="197" x2="545" y2="570"/>
+    <line x1="738" y1="197" x2="738" y2="570"/>
+    <line x1="930" y1="197" x2="930" y2="570"/>
+  </g>
+  <line x1="160" y1="446" x2="930" y2="446" stroke="#49697c" stroke-width="2.5"/>
+  <line x1="545" y1="197" x2="545" y2="570" stroke="#49697c" stroke-width="2.5"/>
+
+  <!-- Vector field curve -->
+  <polyline points="160,375 208,307 256,249 304,211 353,197 401,211 449,249 497,307 545,375 593,443 641,500 689,539 738,552 786,539 834,500 882,443 930,375"
+            fill="none" stroke="#146c94" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- Fixed points -->
+  <circle cx="596" cy="446" r="10" fill="#20866f" stroke="#ffffff" stroke-width="4"/>
+  <circle cx="879" cy="446" r="10" fill="#ffffff" stroke="#b42338" stroke-width="4"/>
+  <line x1="596" y1="436" x2="596" y2="580" stroke="#20866f" stroke-width="2" stroke-dasharray="6 6"/>
+  <line x1="879" y1="436" x2="879" y2="580" stroke="#b42338" stroke-width="2" stroke-dasharray="6 6"/>
+  <text x="596" y="610" text-anchor="middle" class="stable">stable δₛ ≈ 0.412</text>
+  <text x="879" y="610" text-anchor="middle" class="unstable">unstable δᵤ ≈ 2.730</text>
+
+  <!-- Flow arrows on circle coordinate -->
+  <line x1="205" y1="650" x2="420" y2="650" stroke="#356b86" stroke-width="3" marker-end="url(#flowArrow)"/>
+  <line x1="535" y1="650" x2="585" y2="650" stroke="#356b86" stroke-width="3" marker-end="url(#flowArrow)"/>
+  <line x1="850" y1="650" x2="620" y2="650" stroke="#356b86" stroke-width="3" marker-end="url(#flowArrow)"/>
+  <line x1="885" y1="650" x2="915" y2="650" stroke="#356b86" stroke-width="3" marker-end="url(#flowArrow)"/>
+  <text x="110" y="654" class="note">flow:</text>
+
+  <!-- Left labels -->
+  <text x="145" y="202" text-anchor="end" class="axis">1.4</text>
+  <text x="145" y="380" text-anchor="end" class="axis">0.4</text>
+  <text x="145" y="451" text-anchor="end" class="axis">0</text>
+  <text x="145" y="557" text-anchor="end" class="axis">−0.6</text>
+  <text x="160" y="590" text-anchor="middle" class="axis">−π</text>
+  <text x="353" y="590" text-anchor="middle" class="axis">−π/2</text>
+  <text x="545" y="590" text-anchor="middle" class="axis">0</text>
+  <text x="738" y="590" text-anchor="middle" class="axis">π/2</text>
+  <text x="930" y="590" text-anchor="middle" class="axis">π</text>
+  <text x="930" y="425" text-anchor="end" class="math">δ</text>
+  <text x="175" y="220" class="math">δ̇ = 0.4 − sin δ</text>
+
+  <!-- Right panel -->
+  <rect x="1080" y="205" width="370" height="365" fill="#ecf8f4" opacity="0.72"/>
+  <g stroke="#dce7ed" stroke-width="1.5">
+    <line x1="1080" y1="550" x2="1450" y2="550"/>
+    <line x1="1080" y1="465" x2="1450" y2="465"/>
+    <line x1="1080" y1="380" x2="1450" y2="380"/>
+    <line x1="1080" y1="295" x2="1450" y2="295"/>
+    <line x1="1080" y1="210" x2="1450" y2="210"/>
+    <line x1="1080" y1="205" x2="1080" y2="570"/>
+    <line x1="1265" y1="205" x2="1265" y2="570"/>
+    <line x1="1450" y1="205" x2="1450" y2="570"/>
+  </g>
+  <line x1="1080" y1="570" x2="1450" y2="570" stroke="#49697c" stroke-width="2.5"/>
+  <line x1="1080" y1="205" x2="1080" y2="570" stroke="#49697c" stroke-width="2.5"/>
+  <line x1="1450" y1="205" x2="1450" y2="570" stroke="#b42338" stroke-width="4" stroke-dasharray="10 8"/>
+
+  <!-- Analytically sampled tau*K = 1/sqrt(1-r^2), clipped near r = 0.98 -->
+  <polyline points="1080.0,550.0 1098.5,549.9 1117.0,549.6 1135.5,549.0 1154.0,548.2 1172.5,547.2 1191.0,545.9 1209.5,544.3 1228.0,542.3 1246.5,539.8 1265.0,536.9 1283.5,533.2 1302.0,528.8 1320.5,523.1 1339.0,516.0 1357.5,506.5 1376.0,493.3 1394.5,473.6 1405.6,456.0 1413.0,440.0 1420.4,418.1 1427.8,385.9 1431.5,362.8 1435.2,331.4 1438.9,285.4 1440.8,252.5 1442.6,207.9"
+        fill="none" stroke="#7a58a6" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#riseArrow)"/>
+  <circle cx="1228" cy="542.3" r="7" fill="#7a58a6" stroke="#ffffff" stroke-width="3"/>
+  <text x="1218" y="522" text-anchor="middle" class="math">r = 0.4</text>
+  <text x="1218" y="567" text-anchor="middle" class="note">τK ≈ 1.091</text>
+
+  <text x="1065" y="554" text-anchor="end" class="axis">1</text>
+  <text x="1065" y="469" text-anchor="end" class="axis">2</text>
+  <text x="1065" y="384" text-anchor="end" class="axis">3</text>
+  <text x="1065" y="299" text-anchor="end" class="axis">4</text>
+  <text x="1065" y="214" text-anchor="end" class="axis">5</text>
+  <text x="1080" y="594" text-anchor="middle" class="axis">0</text>
+  <text x="1265" y="594" text-anchor="middle" class="axis">0.5</text>
+  <text x="1450" y="594" text-anchor="middle" class="axis">1</text>
+  <text x="1265" y="628" text-anchor="middle" class="math">r = |Δω| / K</text>
+  <text x="1100" y="230" class="math">τK = 1 / √(1 − r²)</text>
+  <text x="1435" y="650" text-anchor="end" class="unstable">locking boundary r = 1</text>
+  <text x="1435" y="677" text-anchor="end" class="note">τ → ∞; robustness vanishes</text>
+
+  <rect x="70" y="748" width="1460" height="48" rx="13" fill="#17324d"/>
+  <text x="800" y="779" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="650" fill="#ffffff">Window gate: existence uses r ≤ 1; stable locking with finite linear relaxation requires r &lt; 1.</text>
+</svg>

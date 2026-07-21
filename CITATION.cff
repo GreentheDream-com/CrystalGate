@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use CrystalGate or the GateFinder reference artifact, please cite the preferred preprint and identify this repository as the software source."
+title: "CrystalGate GateFinder Reference Artifact"
+type: software
+authors:
+  - family-names: Covington
+    given-names: Derrick
+    affiliation: "Green The Dream Research Lab, Independent Researcher, United States"
+version: "0.1.0"
+date-released: "2026-07-21"
+license: "PolyForm-Noncommercial-1.0.0"
+repository-code: "https://github.com/GreentheDream-com/Gated-Mathematics"
+url: "https://github.com/GreentheDream-com/Gated-Mathematics"
+keywords:
+  - typed mathematical reasoning
+  - formal methods
+  - scientific inference
+  - graph routing
+  - model validation
+preferred-citation:
+  type: article
+  authors:
+    - family-names: Covington
+      given-names: Derrick
+      affiliation: "Green The Dream Research Lab, Independent Researcher, United States"
+  title: "CrystalGate: A Typed Gate Calculus for Lawful Mathematical Transformation and Observable-Driven Inference"
+  year: 2026
+  month: 7
+  day: 18
+  doi: "10.13140/RG.2.2.35795.34082"
+  url: "https://doi.org/10.13140/RG.2.2.35795.34082"
